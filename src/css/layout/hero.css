@@ -1,0 +1,134 @@
+/**
+ * ============================================================================
+ * LAYOUT: HERO SECTION
+ * ============================================================================
+ *
+ * 2-column hero grid with ambient glowing orbs, animated headline, live stats,
+ * and colour strip container.
+ */
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 44px 5vw;
+  align-items: center;
+  align-content: start;
+  min-height: 100vh;
+  min-height: 100svh;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 104px var(--pad) 56px;
+}
+
+.hero > * {
+  min-width: 0;
+}
+
+/* Ambient gradient background orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.3;
+  width: 42vw;
+  height: 42vw;
+  max-width: 560px;
+  max-height: 560px;
+  pointer-events: none;
+  z-index: 0;
+  transition: background-color 1.2s ease;
+}
+
+.o1 {
+  background: #ff9ec7;
+  top: -6%;
+  right: 4%;
+}
+
+.o2 {
+  background: #4b3fd8;
+  bottom: -8%;
+  left: -6%;
+}
+
+.in,
+.mo,
+.sw {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero text content */
+.hero h1 {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 5.4vw, 88px);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  margin: 0 0 26px;
+}
+
+.ln {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+}
+
+.ln span {
+  display: block;
+  white-space: nowrap;
+}
+
+.hero p {
+  margin: 0;
+  max-width: 50ch;
+  color: var(--color-text-muted, #b8b4ac);
+  font-size: 18px;
+}
+
+.cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+/* Live stats counter */
+.st {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: start;
+  gap: 12px 36px;
+  margin-top: 38px;
+}
+
+.st div {
+  display: flex;
+  flex-direction: column;
+}
+
+.st b {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.st span {
+  font-size: 13px;
+  color: var(--color-text-muted, #b8b4ac);
+}
+
+.hnt {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: #8d8a84;
+}
+
+/* Full-width container spanning both grid columns */
+.sw {
+  grid-column: 1 / -1;
+  max-width: 100%;
+}

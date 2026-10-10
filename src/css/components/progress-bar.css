@@ -1,0 +1,31 @@
+/**
+ * ============================================================================
+ * COMPONENT: PROGRESS BAR (.pgb)
+ * ============================================================================
+ *
+ * Horizontal scroll progress indicator anchored at the bottom of the pinned
+ * showcase section, scaling from 0 to 1 as the user scrolls through the 22 styles.
+ */
+
+.pgb {
+  display: none;
+  position: absolute;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 36px);
+  left: var(--edge);
+  right: var(--edge);
+  height: 3px;
+  background: #8884;
+  z-index: 2;
+}
+
+.pin .pgb {
+  display: block;
+}
+
+.pgb i {
+  display: block;
+  height: 100%;
+  background: currentColor;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}

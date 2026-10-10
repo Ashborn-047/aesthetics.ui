@@ -1,0 +1,96 @@
+/**
+ * ============================================================================
+ * COMPONENT: BUTTONS
+ * ============================================================================
+ *
+ * Core call-to-action buttons (.cb), ghost buttons (.cb.g), action triggers (.go),
+ * circular arrow controls (.ar), and toolbar buttons (.tb).
+ */
+
+/* Pill Call to Action button */
+.cb {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 26px;
+  border-radius: 40px;
+  background: var(--color-fg-base, #f1eee8);
+  color: var(--color-bg-base, #232323);
+  text-decoration: none;
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.cb:hover {
+  transform: translateY(-2px);
+}
+
+/* Ghost outline variant */
+.cb.g {
+  background: transparent;
+  color: var(--color-fg-base, #f1eee8);
+  border: 1px solid #ffffff55;
+}
+
+/* "Open guide" button on carousel slide */
+.go {
+  margin-left: auto;
+  background: var(--fg);
+  color: var(--bg);
+  border: 0;
+  padding: 12px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.go:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+/* Circular navigation arrows (prev/next on preview card) */
+.ar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 2px 0;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.ar:hover {
+  transform: scale(1.08);
+  background: #ffffff1f;
+}
+
+/* Toolbar button (.tb) */
+.tb {
+  background: #ffffff1a;
+  color: inherit;
+  border: 0;
+  border-radius: 18px;
+  padding: 7px 14px;
+  cursor: pointer;
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  transition: background 0.15s ease;
+}
+
+.tb:hover {
+  background: #ffffff2e;
+}

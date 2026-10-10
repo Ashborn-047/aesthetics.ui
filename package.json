@@ -1,0 +1,47 @@
+{
+  "name": "aesthetics.ui",
+  "private": true,
+  "version": "1.0.0",
+  "description": "An interactive UI/UX reference and live code playground for 22 web design aesthetics.",
+  "homepage": "https://ashborn-047.github.io/aesthetics.ui/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ashborn-047/aesthetics.ui.git"
+  },
+  "keywords": [
+    "design-system",
+    "web-aesthetics",
+    "ui-design",
+    "claymorphism",
+    "cybercore",
+    "neo-brutalism",
+    "glassmorphism",
+    "neumorphism",
+    "gsap",
+    "typescript",
+    "react",
+    "vite"
+  ],
+  "author": "Ashborn-047",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "oxlint": "^1.81.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  }
+}

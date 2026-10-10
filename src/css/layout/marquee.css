@@ -1,0 +1,63 @@
+/**
+ * ============================================================================
+ * LAYOUT: MARQUEE SECTION
+ * ============================================================================
+ *
+ * Infinite bidirectional scrolling typography ticker featuring style names
+ * rendered in their respective Google Fonts. Pauses on hover.
+ */
+
+.mq {
+  padding: 6vh 0;
+  overflow: hidden;
+  border-block: 1px solid var(--color-border-subtle, #ffffff14);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mqr {
+  overflow: hidden;
+}
+
+.mqt {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: mq 70s linear infinite;
+}
+
+.mqt > * {
+  margin-right: 32px;
+}
+
+/* Row 2 scrolls in reverse with outlined stroke text */
+.mqr.r1 .mqt {
+  animation-direction: reverse;
+}
+
+.mqt span {
+  font-size: clamp(28px, 5vw, 64px);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.mqt b {
+  opacity: 0.35;
+  font-weight: 400;
+}
+
+.r1 span {
+  color: transparent !important;
+  -webkit-text-stroke: 1px #f1eee8;
+}
+
+.mq:hover .mqt {
+  animation-play-state: paused;
+}
+
+@keyframes mq {
+  to {
+    transform: translateX(-50%);
+  }
+}

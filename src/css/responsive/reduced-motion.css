@@ -1,0 +1,29 @@
+/**
+ * ============================================================================
+ * RESPONSIVE: REDUCED MOTION (prefers-reduced-motion: reduce)
+ * ============================================================================
+ *
+ * Disables infinite marquee animations, removes CSS transitions and transforms
+ * for users who request reduced motion at the OS level.
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .mqt {
+    animation: none !important;
+  }
+
+  .t,
+  .cb,
+  #cl {
+    transition: none !important;
+  }
+}

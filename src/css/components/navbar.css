@@ -1,0 +1,49 @@
+/**
+ * ============================================================================
+ * COMPONENT: NAVBAR
+ * ============================================================================
+ *
+ * Fixed top navigation bar with frosted-glass backdrop filter blur,
+ * branding logo, and anchor jump links.
+ */
+
+.top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 12px var(--edge);
+  background: #232323f2;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border-subtle, #ffffff14);
+  white-space: nowrap;
+}
+
+.tin {
+  display: contents;
+}
+
+.top b {
+  margin-right: auto;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+.top a {
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.75;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.top a:hover {
+  opacity: 1;
+}

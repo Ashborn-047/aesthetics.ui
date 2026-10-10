@@ -1,0 +1,36 @@
+/**
+ * ============================================================================
+ * LAYOUT: TYPOGRAPHY SECTION ("CHOOSING TYPE")
+ * ============================================================================
+ *
+ * Section exploring font classifications (Serif, Sans, Display, Mono, Hand).
+ * Grid of interactive category cards linking to type guides.
+ */
+
+.ty {
+  padding-top: 12vh;
+  padding-bottom: 4vw;
+}
+
+.ty h2 {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(34px, 6vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin: 0 0 8px;
+}
+
+.ty > p {
+  margin: 0 0 28px;
+  color: var(--color-text-muted, #b8b4ac);
+  max-width: 58ch;
+}
+
+/* 5-column responsive grid of font category cards */
+.kd {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: 12px;
+  margin-bottom: 0;
+}

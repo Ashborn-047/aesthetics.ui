@@ -1,0 +1,62 @@
+/**
+ * ============================================================================
+ * RESPONSIVE: MOBILE BREAKPOINTS (max-width: 700px, 560px, max-height: 520px)
+ * ============================================================================
+ *
+ * Hides ambient floating cards on small screens, enables horizontal scrolling
+ * for the colour strip, reflows stats and buttons, and collapses secondary text
+ * on short viewports.
+ */
+
+@media (max-width: 700px) {
+  /* Hide floating preview cards to prioritize content clarity */
+  .fc {
+    display: none;
+  }
+
+  /* Make colour strip horizontally scrollable */
+  #sp {
+    overflow-x: auto;
+  }
+
+  #sp button {
+    flex: 0 0 30px;
+    height: 48px;
+  }
+
+  /* Navbar spacing */
+  .top {
+    gap: 14px;
+  }
+
+  .top a:first-of-type {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .t.w {
+    grid-column: auto;
+  }
+
+  .st {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .go {
+    margin-left: 0;
+  }
+
+  .slide {
+    width: 88vw;
+    min-height: 0;
+  }
+}
+
+@media (max-height: 520px) {
+  /* Hide lengthy card descriptions on landscape mobile / short windows */
+  .ds,
+  .tcl {
+    display: none;
+  }
+}

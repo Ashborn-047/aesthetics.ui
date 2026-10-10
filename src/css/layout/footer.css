@@ -1,0 +1,353 @@
+/**
+ * ============================================================================
+ * LAYOUT: FOOTER SECTION
+ * ============================================================================
+ *
+ * Distinct two-part layout:
+ * - Part 1: Interactive Deck (Discovery Card & Directory Card)
+ * - Part 2: Signature Multi-Font Typography Banner & Colophon Bar
+ */
+
+.wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: var(--pad);
+  padding-right: var(--pad);
+}
+
+.ft {
+  background: #141414;
+  padding: 12vh 0 32px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ========================================================================== */
+/* PART 1: INTERACTIVE DECK (Two-Card Split)                                  */
+/* ========================================================================== */
+.ft-deck {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 28px;
+  margin-bottom: 8vh;
+  align-items: stretch;
+}
+
+.ft-card {
+  background: linear-gradient(135deg, rgba(38, 38, 38, 0.78), rgba(22, 22, 22, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  padding: clamp(26px, 3.5vw, 42px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 26px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ft-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
+}
+
+.ft-badge {
+  font-family: system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ff9ec7;
+  background: rgba(255, 158, 199, 0.14);
+  border: 1px solid rgba(255, 158, 199, 0.25);
+  padding: 5px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.ft-card-title {
+  margin: 0 0 10px;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 3.2vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: #f1eee8;
+}
+
+.ft-card-desc {
+  margin: 0;
+  color: var(--color-text-muted, #b8b4ac);
+  font-size: 15px;
+  line-height: 1.55;
+  max-width: 44ch;
+}
+
+.ft-cta-action {
+  margin: 4px 0;
+}
+
+.ft-surprise-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 40px;
+  background: #f1eee8;
+  color: #1e1e1e;
+  font-family: system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  border: 0;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s, background-color 0.2s;
+}
+
+.ft-surprise-btn:hover {
+  transform: translateY(-2px);
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(255, 255, 255, 0.25);
+}
+
+.ft-sparkle {
+  font-size: 14px;
+  color: #ff9ec7;
+  transition: transform 0.3s ease;
+}
+
+.ft-surprise-btn:hover .ft-sparkle {
+  transform: rotate(45deg) scale(1.2);
+}
+
+.ft-mood-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 18px;
+}
+
+.ft-col-title {
+  margin: 0 0 12px;
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #f1eee8;
+}
+
+.ft-mood-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ft-mood-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #f1eee8;
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ft-mood-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+.mood-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Directory columns */
+.ft-directory-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 28px;
+}
+
+.ft-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ft-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f1eee8;
+  text-decoration: none;
+  font-family: system-ui, sans-serif;
+  font-size: 14.5px;
+  padding: 5px 0;
+  opacity: 0.85;
+  transition: opacity 0.15s, transform 0.15s, color 0.15s;
+}
+
+.ft-link:hover {
+  opacity: 1;
+  transform: translateX(4px);
+  color: #ffffff;
+}
+
+.ft-arrow {
+  color: #ff9ec7;
+  font-weight: 700;
+}
+
+.ft-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.ft-pill-list li {
+  font-family: system-ui, sans-serif;
+  font-size: 12.5px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: 4px 11px;
+  color: #d0ccc4;
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.18s ease;
+}
+
+.ft-pill-list li:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.ft-stat-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  color: #8e8a84;
+  letter-spacing: 0.04em;
+}
+
+/* Responsive grid for Part 1 */
+@media (max-width: 980px) {
+  .ft-deck {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 6vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .ft-directory-cols {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* ========================================================================== */
+/* PART 2: SIGNATURE TYPOGRAPHY BANNER & COLOPHON                             */
+/* ========================================================================== */
+.ft-part-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 6vh;
+}
+
+/* Massive multi-font word art: perfectly centered & majestic */
+.fw {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0 0.32em;
+  font-size: clamp(48px, 12.5vw, 190px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin: 3vh 0 6vh;
+  width: 100%;
+  text-align: center;
+}
+
+.fwd {
+  display: inline-flex;
+  overflow: hidden;
+  padding: 0.16em 0.04em 0.12em;
+}
+
+.fw .fwd span {
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s ease;
+  will-change: transform;
+}
+
+.fw .fwd span:hover {
+  transform: translateY(-0.16em) rotate(var(--tilt, -6deg)) scale(1.08) !important;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.6));
+}
+
+/* Bottom colophon bar */
+.fb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: system-ui, sans-serif;
+  font-size: 13.5px;
+  color: #9c9890;
+}
+
+.fb-copy,
+.fb-tech {
+  opacity: 0.85;
+}
+
+.fb-up {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1eee8;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 8px 18px;
+  cursor: pointer;
+  font: 600 13px system-ui, sans-serif;
+  transition: all 0.2s ease;
+}
+
+.fb-up:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  color: #ffffff;
+}

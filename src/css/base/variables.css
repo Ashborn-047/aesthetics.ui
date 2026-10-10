@@ -1,0 +1,24 @@
+/**
+ * ============================================================================
+ * DESIGN SYSTEM VARIABLES & ROOT TOKENS
+ * ============================================================================
+ *
+ * Defines fluid spacing, viewport edge boundaries, and root CSS custom properties.
+ */
+
+:root {
+  /* Box sizing and mobile safe areas */
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* Fluid padding and edge alignment for containers */
+  --pad: 6vw;
+  --edge: max(var(--pad), calc(50% - 640px + var(--pad)));
+
+  /* Global background and typography tokens */
+  --color-bg-base: #232323;
+  --color-fg-base: #f1eee8;
+  --color-text-muted: #b8b4ac;
+  --color-border-subtle: #ffffff14;
+}

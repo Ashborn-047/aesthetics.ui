@@ -1,0 +1,82 @@
+/**
+ * ============================================================================
+ * COMPONENT: FONT CHIPS & PREVIEWS (.fch, .cs, .tb)
+ * ============================================================================
+ *
+ * Clickable font chips that load fonts dynamically on demand from Google Fonts,
+ * allowing live switching of fonts on carousel slides and category guides.
+ */
+
+.tb {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tl2 {
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.tcl {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.fnm {
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.fcl {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-muted, #b8b4ac);
+}
+
+.cs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.fch {
+  font-family: system-ui, sans-serif;
+  font-size: 12.5px;
+  padding: 5px 10px;
+  border-radius: 16px;
+  border: 1px solid #ffffff3a;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.fch small {
+  opacity: 0.6;
+  margin-left: 4px;
+}
+
+.fch[aria-pressed='true'] {
+  background: #ffffff1f;
+  border-color: #f1eee8;
+}
+
+.slide .fch {
+  border-color: #8886;
+}
+
+.slide .fch[aria-pressed='true'] {
+  background: #8883;
+  border-color: currentColor;
+}

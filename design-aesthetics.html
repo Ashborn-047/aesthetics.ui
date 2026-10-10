@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Interface Style Handbook</title>
+<meta name="description" content="A UI/UX reference for 22 web design aesthetics: tokens, palettes, font pairings, components, motion, type guides and a live code playground.">
+<meta property="og:title" content="The Interface Style Handbook">
+<meta property="og:description" content="Tokens, palettes, fonts, motion and live code for 22 web design aesthetics.">
+<meta name="theme-color" content="#232323">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&family=Orbitron:wght@500;700&family=Space+Grotesk:wght@400;700&family=Caveat&family=DM+Serif+Display&family=Righteous&family=Press+Start+2P&family=Audiowide&family=Plus+Jakarta+Sans&family=Poppins&family=Manrope:wght@400;800&family=Playfair+Display:wght@400;900&family=Archivo:wght@400;800&family=DM+Sans:wght@300;400&family=Bowlby+One&family=Cormorant+Garamond:wght@300;500&family=Patrick+Hand&family=Jost:wght@200;300&family=Lora&family=IM+Fell+English&family=Share+Tech+Mono&family=Zen+Old+Mincho&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:#232323;color:#f1eee8;font:16px/1.5 system-ui,sans-serif;overflow-x:hidden}
+.top{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;gap:22px;padding:12px var(--edge);background:#232323f2;backdrop-filter:blur(12px);border-bottom:1px solid #ffffff14;white-space:nowrap}.tin{display:contents}
+.top b{margin-right:auto;font:800 18px 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.02em}
+.top a{text-decoration:none;font-size:14px;opacity:.75;color:inherit}.top a:hover{opacity:1}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;gap:44px;padding:120px 6vw 40px;max-width:1360px;margin:0 auto}
+.hero h1{font:800 clamp(44px,8.4vw,128px)/.9 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.045em;margin:0 0 26px}
+.ln{display:block;overflow:hidden;padding-bottom:.1em}.ln span{display:block}
+.hero p{margin:0;max-width:50ch;color:#b8b4ac;font-size:18px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.cb{padding:14px 26px;border-radius:40px;background:#f1eee8;color:#232323;text-decoration:none;font-weight:600;transition:transform .2s}
+.cb.g{background:transparent;color:#f1eee8;border:1px solid #ffffff55}.cb:hover{transform:translateY(-2px)}
+#sp{display:flex;gap:2px;border-radius:8px;overflow:hidden}
+#sp button{flex:1;height:54px;border:0;padding:0;cursor:pointer;background:linear-gradient(var(--bg) 72%,var(--ac) 72%)}
+#sp button:hover,#sp button:focus-visible{outline:2px solid #fff;outline-offset:-2px}
+.fc{position:absolute;width:150px;padding:14px;border-radius:14px;background:var(--bg);color:var(--fg);font:20px/1.1 var(--f),system-ui,sans-serif;box-shadow:0 18px 40px #0006;display:flex;flex-direction:column;gap:12px}
+.s{width:84px;height:30px;background:var(--ac);border-radius:var(--r);box-shadow:var(--sh)}
+.sc{position:relative;background:#232323;color:#f1eee8;overflow:hidden;padding:90px 0 60px}
+.sc.pin{height:100vh;padding:0;display:flex;flex-direction:column;justify-content:center}
+.shd{display:none;position:absolute;top:84px;left:6vw;right:6vw;justify-content:space-between;font:600 14px system-ui,sans-serif;letter-spacing:.05em}
+.pin .shd{display:flex}
+.track{display:flex;gap:3vw;padding:0 6vw;overflow-x:auto;scroll-snap-type:x mandatory}
+.pin .track{overflow:visible;width:max-content;scroll-snap-type:none}
+.slide{flex:none;width:min(80vw,760px);height:min(62vh,470px);scroll-snap-align:center;position:relative;border-radius:20px;padding:clamp(20px,3vw,40px);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;background:var(--bg);color:var(--fg);font-family:var(--f),system-ui,sans-serif;box-shadow:0 30px 60px #0004}
+.idx{font:600 13px system-ui,sans-serif;opacity:.6}
+.nm{font-weight:400;font-size:clamp(30px,5.4vw,72px);line-height:.98;margin:0 0 12px;overflow-wrap:anywhere}
+.ds{font:15px/1.5 system-ui,sans-serif;max-width:42ch;opacity:.8;margin:0}
+.mu{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.mb{padding:12px 22px;background:var(--ac);color:var(--lb);border-radius:var(--r);box-shadow:var(--sh);font:15px system-ui,sans-serif}
+.mc{width:96px;height:56px;border-radius:var(--r);box-shadow:var(--sh);background:var(--bg);border:1px solid #8884}
+.dots{display:flex;gap:5px}.dots i{width:14px;height:14px;border-radius:50%;border:1px solid #8886}
+.go{margin-left:auto;background:var(--fg);color:var(--bg);border:0;padding:12px 20px;border-radius:30px;cursor:pointer;font:600 14px system-ui,sans-serif}
+.pgb{display:none;position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 36px);left:6vw;right:6vw;height:3px;background:#8884}
+.pin .pgb{display:block}.pgb i{display:block;height:100%;background:currentColor;transform-origin:0 50%;transform:scaleX(0)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 6vw}
+.ft{background:#161616;padding:10vh 0 28px;overflow:hidden}
+.fcta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:clamp(24px,4vw,48px);border-radius:24px;background:linear-gradient(120deg,#2e2e2e,#232323);border:1px solid #ffffff14;margin-bottom:8vh}
+.fcta h3{margin:0 0 6px;font:800 clamp(26px,4vw,44px)/1.05 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.03em}
+.fcta p{margin:0;color:#b8b4ac}
+.fcta .cb{border:0;cursor:pointer;font:600 16px system-ui,sans-serif}
+.fgd{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px}
+.ft h4{margin:0 0 12px;font-size:12px;letter-spacing:.08em;opacity:.55;font-weight:600}
+.ft .l{display:block;background:none;border:0;color:#f1eee8;text-decoration:none;font:15px system-ui,sans-serif;padding:4px 0;cursor:pointer;opacity:.85}.ft .l:hover{opacity:1}
+.cl{display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0;list-style:none}
+.cl li{font-size:13px;border:1px solid #ffffff2b;border-radius:20px;padding:4px 12px}
+.fw{display:flex;flex-wrap:wrap;gap:0 .28em;font-size:clamp(40px,12.5vw,190px);line-height:.95;letter-spacing:-.03em;margin:9vh 0 6vh}
+.fwd{display:inline-flex;overflow:hidden;padding:.15em .02em .1em}
+.fw .fwd span{display:inline-block;transition:transform .25s}
+.fw .fwd span:hover{transform:translateY(-.1em) rotate(-5deg)}
+.fb{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:20px;border-top:1px solid #ffffff1f;font-size:13px;opacity:.85}
+.fb button{background:#ffffff1a;color:#f1eee8;border:0;border-radius:20px;padding:8px 16px;cursor:pointer;font:inherit}
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:44px 5vw;align-items:center;align-content:center;min-height:100vh;min-height:100svh;padding:120px 6vw 48px}
+.hero h1{font-size:clamp(40px,7vw,112px)}
+.in,.mo,.sw{position:relative;z-index:1}.sw{grid-column:1/-1}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.3;width:42vw;height:42vw;max-width:560px;max-height:560px;pointer-events:none;z-index:0}
+.o1{background:#ff9ec7;top:-6%;right:4%}.o2{background:#4b3fd8;bottom:-8%;left:-6%}
+.st{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:12px 36px;margin-top:38px}
+.st div{display:flex;flex-direction:column}
+.st b{font:800 clamp(28px,3.4vw,44px)/1 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.03em}
+.st span{font-size:13px;color:#b8b4ac}
+.hnt{margin:0 0 10px;font-size:13px;color:#8d8a84}
+.mo{width:min(400px,100%);justify-self:center}
+.mp{background:var(--bg);color:var(--fg);font-family:var(--f),system-ui,sans-serif;border-radius:22px;padding:24px;min-height:340px;display:flex;flex-direction:column;gap:16px;box-shadow:0 30px 70px #0007;position:relative;z-index:1}
+.mph{font:600 12px system-ui,sans-serif;letter-spacing:.06em;opacity:.65;text-transform:uppercase}
+.mn{margin:0;font-weight:400;font-size:clamp(32px,3.6vw,48px);line-height:1;overflow-wrap:anywhere}
+.mtx{margin:0;font:14px/1.5 system-ui,sans-serif;opacity:.8}
+.mi{padding:10px 14px;border-radius:var(--r);border:1px solid currentColor;opacity:.65;font:14px system-ui,sans-serif}
+.mpn{display:flex;align-items:center;gap:8px;margin-top:auto}
+.ar{width:38px;height:38px;border-radius:50%;border:1px solid currentColor;background:none;color:inherit;cursor:pointer;font-size:20px;line-height:1}
+.mo .fc{translate:-50% -50%;cursor:grab;touch-action:none;z-index:2}
+.mq{padding:6vh 0;overflow:hidden;border-block:1px solid #ffffff14;display:flex;flex-direction:column;gap:10px}
+.mqr{overflow:hidden}
+.mqt{display:flex;align-items:center;width:max-content;animation:mq 70s linear infinite}
+.mqt>*{margin-right:32px}
+.mqr.r1 .mqt{animation-direction:reverse}
+.mqt span{font-size:clamp(28px,5vw,64px);line-height:1.2;white-space:nowrap}
+.mqt b{opacity:.35;font-weight:400}
+.r1 span{color:transparent!important;-webkit-text-stroke:1px #f1eee8}
+.mq:hover .mqt{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+.ty{padding-top:12vh;padding-bottom:4vw}
+.ty h2{font:800 clamp(34px,6vw,72px)/1 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.04em;margin:0 0 8px}
+.ty>p{margin:0 0 28px;color:#b8b4ac;max-width:58ch}
+.kd{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:12px;margin-bottom:0}
+.kc{background:#2b2b2b;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.kc .aa{font-size:54px;line-height:1}.kc h3{margin:0;font:600 16px system-ui,sans-serif}
+.kc p{margin:0;font:13px/1.5 system-ui,sans-serif;color:#b8b4ac}.kc small{font:12px/1.4 system-ui,sans-serif;opacity:.6}
+.fnm{font:600 18px system-ui,sans-serif}.fcl{margin:0;font:13px/1.5 system-ui,sans-serif;color:#b8b4ac}
+.cs{display:flex;flex-wrap:wrap;gap:6px}
+.fch{font:12.5px system-ui,sans-serif;padding:5px 10px;border-radius:16px;border:1px solid #ffffff3a;background:transparent;color:inherit;cursor:pointer}
+.fch small{opacity:.6;margin-left:4px}.fch[aria-pressed=true]{background:#ffffff1f;border-color:#f1eee8}
+#ov{position:fixed;inset:0;z-index:2000;display:flex;flex-direction:column;background:var(--bg,#232323)}
+#ov[hidden]{display:none}
+.ob{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(env(safe-area-inset-top,0px) + 8px) 14px 8px 18px;background:var(--bg);color:var(--fg);font:20px var(--f),system-ui,sans-serif;border-bottom:1px solid #8885}
+#cl{width:42px;height:42px;display:grid;place-items:center;border:0;padding:0;cursor:pointer;background:var(--ac);color:var(--lb);border-radius:var(--r);box-shadow:var(--sh);transition:transform .2s}
+#cl:hover,#cl:focus-visible{transform:rotate(90deg)}
+#cl svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:var(--lc,round)}
+#fr{flex:1;min-height:0;width:100%;border:0;background:#fff}
+@media(max-width:980px){.hero{grid-template-columns:1fr;padding-top:96px}.hero h1{font-size:clamp(40px,12vw,96px)}.mo{width:min(440px,100%)}}
+@media(max-width:700px){.fc{display:none}#sp{overflow-x:auto}#sp button{flex:0 0 30px;height:48px}.top{gap:14px}.top a:first-of-type{display:none}}
+@media(max-width:560px){.t.w{grid-column:auto}.st{grid-template-columns:repeat(2,1fr)}.go{margin-left:0}}
+@media(max-height:520px){.ds{display:none}}
+@media(prefers-reduced-motion:reduce){.mqt{animation:none}}
+html,body{overflow-x:clip}
+.hero>*{min-width:0}.sw{max-width:100%}#sp{max-width:100%}
+.sc.pin{height:100vh;height:100svh}
+*,*::before,*::after{box-sizing:border-box}
+:root{--pad:6vw;--edge:max(var(--pad),calc(50% - 640px + var(--pad)))}
+.hero{max-width:1280px;padding:104px var(--pad) 56px;min-height:0;align-content:start}
+.wrap{max-width:1280px;padding-left:var(--pad);padding-right:var(--pad)}
+.track{padding:0 var(--edge)}
+.shd,.pgb{left:var(--edge);right:var(--edge)}
+.slide{width:min(86vw,840px);height:auto;min-height:min(68vh,520px);gap:18px;justify-content:flex-start}
+.slide .mu{margin-top:auto}
+.pin .track{margin-top:44px}
+.tb{display:flex;flex-direction:column;gap:6px}
+.tl2{font:600 12px system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;opacity:.6}
+.tcl{margin:0;font:13px/1.5 system-ui,sans-serif;opacity:.8}
+.slide .fch{border-color:#8886}.slide .fch[aria-pressed=true]{background:#8883;border-color:currentColor}
+@media(max-width:560px){.slide{width:88vw;min-height:0}}
+@media(max-height:520px){.tcl{display:none}}
+.ln span{white-space:nowrap}
+.kc{border:0;color:inherit;text-align:left;font:inherit;cursor:pointer;transition:transform .15s,background .15s}.kc:hover,.kc:focus-visible{transform:translateY(-4px);background:#333}.kc .ex{margin-top:auto;padding-top:10px;font:600 13px system-ui,sans-serif}
+.hero h1{font-size:clamp(40px,5.4vw,88px)}
+@media(max-width:980px){:root{--pad:5vw}.hero{grid-template-columns:minmax(0,1fr);padding-top:88px}.hero h1{font-size:clamp(40px,12vw,96px)}}
+@media(prefers-reduced-motion:reduce){.t,.cb,#cl{transition:none}}
+</style></head>
+<body>
+<nav class="top"><div class="wrap tin"><b>Style Handbook</b><a href="#showcase">Showcase</a><a href="#fonts">Fonts</a></div></nav>
+<header class="hero" id="top"><i class="orb o1"></i><i class="orb o2"></i>
+<div class="in"><h1><span class="ln"><span>The interface</span></span><span class="ln"><span>style handbook</span></span></h1><p>Tokens, palettes, font pairings, components, motion and a live code playground for 22 web design aesthetics. Open any style for its full guide.</p><div class="cta"><a class="cb" href="#showcase">Start the tour</a><a class="cb g" href="#fonts">Explore the type</a></div><div class="st"><div><b data-n="22">22</b><span>styles</span></div><div><b data-n="66">66</b><span>palette schemes</span></div><div><b data-n="22">22</b><span>font pairings</span></div><div><b data-n="22">22</b><span>live playgrounds</span></div></div></div>
+<div class="mo"><div class="mp" id="mp"><div class="mph" id="mcat"></div><h3 class="mn" id="mn"></h3><p class="mtx" id="mtx"></p><div class="mu"><span class="mb" aria-hidden="true">Button</span><span class="mc" aria-hidden="true"></span><span class="mi" aria-hidden="true">you@studio.com</span></div><div class="mpn"><button class="ar" id="mpv" aria-label="Previous style">&#8249;</button><button class="ar" id="mnx" aria-label="Next style">&#8250;</button><button class="go" id="mgo">Open guide</button></div></div></div>
+<div class="sw"><p class="hnt" id="hnt"></p><div id="sp"></div></div></header>
+<div class="mq" aria-hidden="true"></div>
+<section class="sc" id="showcase" aria-label="Style showcase"><div class="shd"><span id="cnt">01 / 22</span><span id="nm"></span></div><div class="track" id="track"></div><div class="pgb"><i id="pr"></i></div></section>
+<section class="ty wrap" id="fonts"><h2>Choosing type</h2><p>Type carries half of every aesthetic. Open a family to see its fonts, typography animation, text colours and specs. Each style slide above also lists its own fonts and similar ones.</p><div class="kd" id="kd"></div></section>
+<footer class="ft"><div class="wrap">
+<div class="fcta"><div><h3>Not sure where to start?</h3><p>Let the handbook pick a style for you.</p></div><button class="cb" id="rnd">Surprise me</button></div>
+<div class="fgd"><div><h4>JUMP TO A MOOD</h4><button class="l" data-k="s">Soft</button><button class="l" data-k="d">Dark</button><button class="l" data-k="b">Bold</button><button class="l" data-k="c">Calm</button><button class="l" data-k="r">Retro</button></div>
+<div><h4>EVERY GUIDE HAS</h4><ul class="cl"><li>Tokens</li><li>Palettes</li><li>Font pairings</li><li>Similar fonts</li><li>Components</li><li>Motion</li><li>Layout</li><li>Code playground</li></ul></div>
+<div><h4>EXPLORE</h4><a class="l" href="#top">Top</a><a class="l" href="#showcase">Showcase</a><a class="l" href="#fonts">Fonts</a></div></div>
+<div class="fw" aria-label="Style Handbook"></div>
+<div class="fb"><span>Interface Style Handbook, 2026</span><span>Built with GSAP, ScrollTrigger, SVG and CSS</span><button id="up">Back to top</button></div></div></footer>
+<div id="ov" hidden role="dialog" aria-modal="true" aria-labelledby="on"><div class="ob"><span id="on"></span><button id="cl" aria-label="Close guide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19"/></svg></button></div><iframe id="fr" title="Style guide"></iframe></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+<script>
+const FONTS=document.querySelector('link[href*="family=Nunito"]').href;
+const S=[
+["Claymorphism","#f3e8ff","#3b2a5a","#ff9ec7","Nunito",`.btn{color:#3b2a5a;border-radius:26px;font-weight:800;box-shadow:inset -6px -6px 12px #0002,inset 6px 6px 12px #fff9,8px 8px 18px #7b5ea733}.card{border-radius:36px;background:#f8d7ff;box-shadow:inset -8px -8px 16px #0001,inset 8px 8px 16px #fffa,12px 12px 28px #7b5ea740}input{border:0;border-radius:20px;background:#fff8;box-shadow:inset 4px 4px 8px #0002}h1{font-weight:800}.dna{border:0}`,"Puffy 3D shapes from paired inset and outer shadows. Soft pastels, fat rounded type."],
+["Cybercore","#05070f","#c7f9ff","#00f0ff","Orbitron",`.btn{color:#001;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);text-transform:uppercase;letter-spacing:.1em}h1{text-shadow:0 0 18px #00f0ff;letter-spacing:.04em}.card{border:1px solid #00f0ff;box-shadow:0 0 24px #00f0ff44,inset 0 0 24px #00f0ff22}input{border-color:#00f0ff}nav{border-bottom:1px solid #00f0ff55}`,"Near-black base, cyan glow, angled cut corners, wide geometric type."],
+["Neo-Brutalism","#fff3c4","#000","#ff6b6b","Space Grotesk",`.btn{color:#000;border:3px solid #000;box-shadow:5px 5px 0 #000;font-weight:700}.card{background:#8ee3ef;border:3px solid #000;box-shadow:8px 8px 0 #000}input{border:3px solid #000;background:#fff}h1{font-weight:700}nav{border-bottom:3px solid #000}`,"Thick black outlines, hard offset shadows, flat loud colors, no blur."],
+["Scrapbook","#e9dcc3","#3a2e24","#f2c14e","Caveat",`body{font-size:22px;background-image:radial-gradient(#0001 1px,transparent 1px);background-size:14px 14px}.btn{color:#3a2e24;transform:rotate(-2deg);box-shadow:2px 3px 6px #0004;font-size:22px}.card{background:#fffbe8;transform:rotate(2deg);box-shadow:3px 5px 10px #0004;border-top:18px solid #f2c14e99}input{background:#fff;border:2px dashed #3a2e24;transform:rotate(-1deg)}h1{transform:rotate(-1.5deg);background:#f2c14e;display:inline-block;padding:0 14px}`,"Paper textures, tilted pieces, tape strips, handwritten type."],
+["Surrealism","#1b2a49","#f6e7c8","#e8743b","DM Serif Display",`.btn{border-radius:50% 50% 50% 0;padding:18px 26px}h1{font-style:italic;transform:skewX(-6deg)}.card{border-radius:60% 40% 55% 45%/50% 60% 40% 50%;background:radial-gradient(circle at 30% 30%,#e8743b,#7a2e5a);padding:48px}input{border-radius:40px 4px 40px 4px}main::before{content:'';display:block;width:90px;height:90px;border-radius:50%;background:#f6e7c8;box-shadow:30px 40px 0 -20px #e8743b;margin-bottom:20px}`,"Dreamlike organic shapes, warped proportions, unexpected object pairings."],
+["Y2K Aesthetic","#d8f0ff","#1a1a5e","#ff5fd2","Righteous",`.btn{color:#fff;border-radius:30px;border:2px solid #fff;background:linear-gradient(#ff9ae6,#ff5fd2 50%,#c81fa0);box-shadow:0 4px 10px #c81fa066,inset 0 8px 8px #fff7}h1{background:linear-gradient(90deg,#ff5fd2,#4aa8ff,#1a1a5e);-webkit-background-clip:text;background-clip:text;color:transparent}.card{background:linear-gradient(135deg,#fff,#bfe6ff 50%,#f0d4ff);border:2px solid #fff;border-radius:22px;box-shadow:0 6px 20px #4aa8ff66}input{border-radius:20px;border:2px solid #4aa8ff;background:#fff}`,"Glossy gel buttons, chrome gradients, baby blue and hot pink, bubbly type."],
+["Pixel Art","#1a1c2c","#f4f4f4","#ef7d57","Press Start 2P",`body{font-size:12px;line-height:1.9}.btn{color:#1a1c2c;border-radius:0;box-shadow:4px 4px 0 #b13e53;font-size:12px}h1{font-size:clamp(22px,5vw,44px);color:#ffcd75;line-height:1.3}.card{border:4px solid #f4f4f4;box-shadow:6px 6px 0 #29366f;font-size:11px}input{font-size:11px;border:4px solid #f4f4f4;border-radius:0}`,"Bitmap font, hard square edges, limited palette, stepped shadows."],
+["Synthwave","#1a0b3b","#ffe9ff","#ff2e97","Audiowide",`body{background:linear-gradient(#1a0b3b 55%,#ff2e9755 100%) fixed}.btn{color:#fff;border-radius:4px;box-shadow:0 0 18px #ff2e97}h1{text-shadow:3px 3px 0 #ff2e97,6px 6px 0 #00e5ff}.card{border:2px solid #00e5ff;box-shadow:0 0 20px #00e5ff66}input{border-color:#00e5ff}footer{background:repeating-linear-gradient(90deg,#ff2e9733 0 2px,transparent 2px 40px)}`,"80s neon: magenta and cyan, sunset gradient, retro-futurist grid."],
+["Glassmorphism","#4b3fd8","#fff","#ffffff40","Plus Jakarta Sans",`body{background:radial-gradient(circle at 20% 20%,#ff6ec4,transparent 40%),radial-gradient(circle at 80% 70%,#25d9f5,transparent 45%),#4b3fd8}.btn{color:#fff;border:1px solid #fff6;backdrop-filter:blur(10px);border-radius:14px}.card{background:#ffffff26;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid #ffffff55;border-radius:22px;box-shadow:0 8px 32px #0003}input{background:#ffffff22;border:1px solid #fff6;border-radius:12px}nav{background:#ffffff1a}`,"Frosted translucent panels over vivid blurred color, thin light borders."],
+["Neumorphism","#e0e5ec","#3d4852","#e0e5ec","Poppins",`.btn{color:#3d4852;border-radius:14px;box-shadow:7px 7px 14px #a3b1c6,-7px -7px 14px #fff}.card{border-radius:24px;box-shadow:9px 9px 18px #a3b1c6,-9px -9px 18px #fff}input{border:0;border-radius:14px;box-shadow:inset 5px 5px 10px #a3b1c6,inset -5px -5px 10px #fff}`,"Elements extruded from one surface: a dark and a light shadow, same-color fills."],
+["Bento Grid","#f2f2f0","#161616","#ffd84d","Manrope",`main{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1000px}main>*{background:#fff;border-radius:24px;padding:24px;margin:0}main>h1{grid-column:span 3;grid-row:span 2;background:#ffd84d;font-size:clamp(30px,5vw,56px)}main>.card{max-width:none}.btn{color:#161616;border-radius:14px}@media(max-width:600px){main{grid-template-columns:1fr}main>h1{grid-column:auto}}`,"Content packed into a modular grid of rounded tiles with mixed spans."],
+["Editorial Design","#faf7f2","#1c1c1c","#b3261e","Playfair Display",`.btn{color:#fff;border-radius:0}h1{font-weight:900;letter-spacing:-.02em;border-top:6px double #1c1c1c;padding-top:14px}main>p:first-of-type::first-letter{font-size:3.4em;float:left;line-height:.9;padding-right:8px}.card{border-top:3px solid #1c1c1c;border-bottom:1px solid #1c1c1c;padding:16px 0}input{border:0;border-bottom:1px solid;border-radius:0}`,"Magazine logic: serif headlines, drop caps, ruled sections."],
+["Swiss Design","#fff","#000","#e3000f","Archivo",`.btn{color:#fff;border-radius:0}h1{font-weight:800;letter-spacing:-.04em;font-size:clamp(44px,10vw,120px);line-height:.9}nav{border-bottom:4px solid #000}.card{border-left:12px solid #e3000f;padding:0 16px}input{border-radius:0;border:2px solid #000}main{max-width:none}`,"Grid discipline, flush-left sans, huge scale contrast, red/black/white."],
+["Minimalism","#fff","#222","#222","DM Sans",`body{font-weight:300}main{padding-top:12vw}.btn{color:#fff;border-radius:2px;font-size:15px}h1{font-weight:400;font-size:clamp(30px,5vw,52px)}.card{padding:0;margin:56px 0}input{border:0;border-bottom:1px solid #ccc;border-radius:0}nav,.dna{border:0;color:#777}`,"Almost nothing: one color, light weight, generous whitespace."],
+["Maximalism","#ff3d81","#1a0033","#ffe500","Bowlby One",`nav{background:#00c2ff;font-size:20px}.btn{color:#1a0033;border:4px solid #1a0033;border-radius:50px;box-shadow:6px 6px 0 #00c2ff;transform:rotate(-2deg)}h1{color:#ffe500;-webkit-text-stroke:2px #1a0033;text-shadow:6px 6px 0 #00c2ff,12px 12px 0 #1a0033;font-size:clamp(40px,9vw,96px)}.card{background:repeating-linear-gradient(45deg,#ffe500 0 14px,#00e0a0 14px 28px);border:5px solid #1a0033;box-shadow:10px 10px 0 #1a0033}input{border:4px solid #1a0033;background:#fff}`,"More is more: clashing colors, stacked shadows, patterns on patterns."],
+["Luxury Typography","#0e0c09","#e9dcc0","#c8a45c","Cormorant Garamond",`main{text-align:center}.btn{background:transparent;color:#c8a45c;border:1px solid #c8a45c;border-radius:0;letter-spacing:.3em;text-transform:uppercase;font-size:14px}h1{font-weight:300;font-size:clamp(40px,8vw,92px);letter-spacing:.08em}.card{border:1px solid #c8a45c55;padding:32px;margin:40px auto}input{border-color:#c8a45c88;border-radius:0}`,"Light high-contrast serif, wide tracking, gold on black, centered calm."],
+["Conceptual Sketch","#fdfdf8","#223","#fff","Patrick Hand",`body{font-size:21px;background-image:linear-gradient(#4a6cf722 1px,transparent 1px);background-size:100% 28px}.btn{color:#223;border:2px solid #223;border-radius:255px 15px 225px 15px/15px 225px 15px 255px}h1{text-decoration:underline wavy #4a6cf7;text-underline-offset:8px}.card{border:2px solid #223;border-radius:15px 225px 15px 255px/255px 15px 225px 15px;background:#fff}input{background:#fff;border:2px solid #223;border-radius:15px 225px 15px 255px/255px 15px 225px 15px}`,"Wobbly hand-drawn outlines on notebook paper, wireframe-in-progress feel."],
+["Ethereal","#eef0ff","#4a4766","#cbbcff","Jost",`body{font-weight:300;background:radial-gradient(circle at 20% 10%,#ffd6f0,transparent 45%),radial-gradient(circle at 85% 40%,#cfe9ff,transparent 45%),#eef0ff}.btn{color:#4a4766;border-radius:40px;box-shadow:0 0 30px #cbbcff}h1{font-weight:200;color:#6c63b5;text-shadow:0 0 30px #fff,0 0 60px #cbbcff}.card{background:#ffffffaa;border-radius:40px;box-shadow:0 0 60px #d9cffa}input{border:0;border-radius:30px;background:#fff9;box-shadow:0 0 24px #d9cffa}`,"Pastel haze, glows instead of shadows, ultra-light type, dreamy softness."],
+["Bohemian","#f1e3cf","#4a2c1a","#c1572b","Lora",`.btn{color:#fff;border-radius:40px 40px 4px 4px}h1{font-style:italic;color:#8a3b1c}.card{background:#e8c9a0;border:3px double #7b8f4e;border-radius:100px 100px 12px 12px;text-align:center;padding:48px 24px}input{border:2px solid #7b8f4e;background:#fff8;border-radius:12px}nav{border-bottom:3px dotted #c1572b}.dna{border-top:3px dotted #7b8f4e}`,"Earthy terracotta and sage, arched shapes, dotted trims, warm serif."],
+["Victorian","#2b1d1d","#eadfc6","#8c2f39","IM Fell English",`.btn{color:#eadfc6;border:2px double #c9a84c;border-radius:0}h1{text-align:center;color:#c9a84c;font-weight:400;font-style:italic;border-top:3px double #c9a84c;border-bottom:3px double #c9a84c;padding:10px 0}.card{border:6px double #c9a84c;background:#3a2626;text-align:center}input{border:2px solid #c9a84c;background:#1e1414;border-radius:0}nav{border-bottom:3px double #c9a84c}`,"Oxblood and gold, double-rule frames, old-style engraved lettering."],
+["Cyberpunk","#0a0a0f","#f5f500","#ff003c","Share Tech Mono",`.btn{color:#fff;border-radius:0;clip-path:polygon(0 0,100% 0,100% 70%,92% 100%,0 100%);text-transform:uppercase}h1{text-shadow:3px 0 #ff003c,-3px 0 #00f0ff;text-transform:uppercase}.card{border:2px solid #f5f500;box-shadow:6px 6px 0 #ff003c}input{border:2px solid #00f0ff;border-radius:0;background:#000}nav{border-bottom:2px solid #ff003c}`,"Yellow terminal text, red/cyan glitch offsets, notched panels, mono type."],
+["Wabi-Sabi","#d9d2c3","#3b3a36","#8a7f6a","Zen Old Mincho",`body{background-image:radial-gradient(#8a7f6a14 1px,transparent 1px);background-size:5px 5px}main{padding-top:10vw}.btn{color:#f1ece0;border-radius:46% 54% 50% 50%/55% 45% 55% 45%}h1{font-weight:400;letter-spacing:.05em}.card{background:#cfc6b4;border-radius:3px 12px 5px 14px;box-shadow:inset 0 0 40px #8a7f6a33;border:1px solid #8a7f6a88}input{border:0;border-bottom:2px solid #8a7f6a;border-radius:0}`,"Muted stone tones, irregular edges, quiet space, beauty in imperfection."]
+];
+const BASE=`*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.5 var(--f),system-ui,sans-serif}nav{display:flex;gap:20px;align-items:center;padding:20px 5vw}nav b{margin-right:auto}main{padding:6vw 5vw;max-width:900px}h1{font-size:clamp(36px,7vw,76px);line-height:1.05;margin:0 0 16px}p{max-width:56ch}.btn{font:inherit;color:var(--bg);background:var(--ac);border:0;padding:12px 22px;cursor:pointer;margin:8px 8px 8px 0}.card{margin:32px 0;padding:24px;max-width:420px}.card h3{margin:0 0 6px}input{font:inherit;color:inherit;padding:12px;background:transparent;border:1px solid;margin:8px 8px 8px 0;max-width:100%}.dna{padding:20px 5vw;font-size:14px;border-top:1px solid;opacity:.9}@media(prefers-reduced-motion:reduce){*{transition:none!important}}`;
+// cat, radius, shadow, spacing unit, type ratio, max width, columns, layout rule, do[3], avoid, support colors
+const G=[
+["s","28px","8px 8px 18px #7b5ea733, inset 6px 6px 12px #fff9",8,1.25,1080,12,"Centered, airy sections. One big hero shape; cards float with generous margins.",["Pair every raised shape with an inset highlight","Keep corners above 20px everywhere","Stay in 3 to 4 pastels plus one saturated accent"],"Dark backgrounds: puffy shadows lose their depth",["#ffd6e8","#c9b6ff"]],
+["d","0","0 0 24px #00f0ff44",8,1.333,1200,12,"Full-bleed dark. Left-aligned HUD panels with thin cyan frames and angled corners.",["Glow only on key or interactive elements","Cut corners with clip-path, never round them","Wide-tracked display type, mono for data"],"Glow on body text: it kills readability",["#7a5cff","#ff2e97"]],
+["b","0","5px 5px 0 #000",8,1.5,1100,12,"Hard grid. Blocks stack edge to edge with visible borders; slight asymmetry is welcome.",["3px black borders on every container","Shadows are solid offsets, never blurred","Flat saturated fills, four colors max"],"Gradients and soft shadows",["#8ee3ef","#a8e66f"]],
+["r","4px","3px 5px 10px #0004",8,1.25,980,6,"Overlapping pieces on a textured canvas. Rotate cards 2 degrees and let items collide.",["Tilt elements between -3 and 3 degrees","Layer paper, tape and doodle details","Use handwritten type for headlines only"],"Perfect alignment: it reads as a template",["#fffbe8","#8a6d4f"]],
+["b","60% 40% 55% 45%/50% 60% 40% 50%","30px 40px 0 -20px #e8743b",8,1.5,1000,8,"Asymmetric compositions anchored by one oversized organic shape.",["Distort one thing per screen, not everything","Use impossible scale: huge object, small text","Keep body copy plain so it stays readable"],"Distorting form fields: legibility comes first",["#7a2e5a","#2f4f7f"]],
+["r","30px","0 4px 10px #c81fa066",8,1.333,1040,12,"Centered stacks with floating glossy objects; badges and stickers in the margins.",["Give buttons a bright top highlight gradient","Pair baby blue with hot pink and silver","Add sparkle or star shapes sparingly"],"Flat matte fills: gloss is the whole look",["#4aa8ff","#c0c8e0"]],
+["r","0","4px 4px 0 #b13e53",8,1.5,900,8,"Snap everything to an 8px grid. Panels are rectangles with chunky borders.",["Use a pixel font in 8, 12 or 16px sizes","Limit the palette to 8 to 16 colors","Shadows are stepped, never blurred"],"Smoothing and rounded corners",["#ffcd75","#29366f"]],
+["d","4px","0 0 18px #ff2e97",8,1.333,1100,12,"Centered hero over a horizon-gradient sky, with grid-floor lines at the base.",["Magenta and cyan only; purple is the canvas","Glow and hard shadow can share one element","Put a sun or grid horizon behind the hero"],"Light backgrounds: neon needs darkness",["#00e5ff","#ffd319"]],
+["s","22px","0 8px 32px #0003",8,1.25,1100,12,"Frosted panels over a vivid blurred gradient, overlapping for depth.",["Blur 12 to 20px plus a 1px light border","Place panels over color, never plain white","Keep text white on a subtle scrim"],"Stacking more than two glass layers",["#ff6ec4","#25d9f5"]],
+["s","14px","7px 7px 14px #a3b1c6, -7px -7px 14px #fff",8,1.25,960,12,"Single-surface layouts. Elements are pressed into or pushed out of one gray.",["Use one fill for page and components","Raised means actionable, inset means input","Add visible labels: shapes alone are faint"],"Low-contrast icons: accessibility is the weak spot",["#a3b1c6","#ffffff"]],
+["c","24px","0 1px 0 #0001",8,1.25,1000,4,"Modular tiles on a 4-column grid. Mix 1x1, 2x1 and 2x2 spans.",["Keep gaps equal at 12 to 16px","One tile, one idea","Make a single hero tile the largest"],"Identical tile sizes: they flatten hierarchy",["#ffffff","#2b2b2b"]],
+["c","0","none",8,1.5,1100,12,"Column-based like print: wide headline, narrow text measure, rules between sections.",["Serif display with a 60 to 75 character measure","Use drop caps and pull quotes","Divide with rules, not boxes"],"Card grids: they turn an article into a dashboard",["#d9d1c3","#6b6b6b"]],
+["c","0","none",8,1.5,1280,12,"Strict 12-column grid, flush-left ragged-right text, huge scale contrast.",["Align everything to the grid","Use only red, black and white","Size creates hierarchy, not decoration"],"Centered text and ornamental effects",["#000000","#ffffff"]],
+["c","2px","none",8,1.25,720,6,"One narrow centered column. Whitespace does the grouping.",["Use one accent at most","Space sections 96px or more apart","Weight 300 to 400; hierarchy by size"],"Borders and shadows to separate things",["#777777","#cccccc"]],
+["b","50px","6px 6px 0 #00c2ff",8,1.5,1200,12,"Dense overlapping layers. No empty background is left.",["Clash colors on purpose","Stack several hard shadows","Anchor the chaos with one readable text block"],"Subtle palettes: they look unfinished here",["#00c2ff","#00e0a0"]],
+["d","0","none",8,1.333,1000,6,"Centered and symmetrical, with huge margins and small spaced-out actions.",["Letter-space labels 0.25em or more","Gold for lines and links only","Light serif weights at large sizes"],"Bright fills and heavy buttons",["#e9dcc0","#7a6a40"]],
+["c","15px 225px 15px 255px/255px 15px 225px 15px","none",8,1.25,960,6,"Wireframe on grid paper. Boxes have uneven outlines, with notes beside them.",["Irregular radii give the hand-drawn edge","One ink color plus one blue marker","Add notes and arrows to explain"],"Perfect geometry and heavy fills",["#4a6cf7","#fff4a3"]],
+["s","40px","0 0 60px #d9cffa",8,1.333,1000,12,"Floating elements on a soft gradient haze. Sparse and centered.",["Use glow instead of shadow","Weights 200 to 300 for display","Keep lavender, pink and sky blue in one hue band"],"Hard edges and dark text blocks",["#ffd6f0","#cfe9ff"]],
+["s","100px 100px 12px 12px","none",8,1.25,1000,8,"Soft centered sections with arch-shaped images and dotted dividers.",["Arches for images and cards","Earth palette: clay, sage, sand","Dotted or double rules as trims"],"Neon and cold blues",["#7b8f4e","#e8c9a0"]],
+["r","0","none",8,1.333,900,6,"Symmetrical framed pages with double rules, centered titles and ornamental dividers.",["Double borders around every panel","Italic old-style serif for headings","Gold on oxblood or deep brown"],"Sans-serif UI and asymmetry",["#c9a84c","#3a2626"]],
+["d","0","6px 6px 0 #ff003c",8,1.25,1200,12,"Dense terminal-like panels with notched corners and glitch accents on titles.",["Yellow, red and cyan on near-black","Offset text-shadows for the glitch","Mono type, uppercase headings"],"Smooth rounded cards",["#00f0ff","#f5f500"]],
+["c","3px 12px 5px 14px","none",8,1.25,860,6,"Quiet asymmetrical layout with generous empty space. Nothing is perfectly aligned.",["Muted natural tones","Slightly irregular radii","Let texture show; avoid pure white"],"Glossy or highly saturated effects",["#cfc6b4","#8a7f6a"]]
+];
+// motion: ease, duration, hover y, hover scale, press scale, press shift, special, carousel
+const M=[
+["elastic.out(1,.5)",.6,-4,1.04,.9,0,"squish","zoom"],["power3.out",.2,0,1,.97,0,"glow","slide"],["power1.out",.12,-3,1,1,4,"","slide"],["back.out(2)",.3,-4,1.04,.96,0,"tilt","stack"],["sine.inOut",.9,-8,1.05,.95,0,"","fade"],["back.out(1.7)",.35,-3,1.06,.94,0,"glow","zoom"],["steps(4)",.3,-4,1,1,4,"","slide"],["power2.out",.3,-2,1.02,.97,0,"glow","fade"],["power2.out",.4,-3,1.02,.98,0,"glow","fade"],["power2.inOut",.3,0,1,.97,0,"inset","fade"],["power3.out",.35,-4,1.02,.98,0,"","zoom"],["power2.out",.5,0,1,.99,0,"","slide"],["power4.out",.25,0,1,.98,0,"","slide"],["power1.out",.4,0,1,.99,0,"","fade"],["elastic.out(1,.4)",.5,-5,1.08,.92,0,"tilt","flip"],["power2.inOut",.8,0,1,.99,0,"","fade"],["power1.inOut",.3,-2,1,.97,0,"tilt","stack"],["sine.inOut",1,-5,1.02,.98,0,"","fade"],["power2.out",.5,-3,1.02,.98,0,"","slide"],["power2.inOut",.7,0,1,.99,0,"","fade"],["power4.out",.15,0,1,.96,0,"glitch","flip"],["sine.inOut",.9,0,1,.99,0,"","fade"]
+];
+const T={slide:[{x:60,autoAlpha:0},{x:0,autoAlpha:1},{x:-60,autoAlpha:0}],fade:[{autoAlpha:0},{autoAlpha:1},{autoAlpha:0}],zoom:[{scale:.85,autoAlpha:0},{scale:1,autoAlpha:1},{scale:1.1,autoAlpha:0}],flip:[{rotationY:90,transformPerspective:600,autoAlpha:0},{rotationY:0,autoAlpha:1},{rotationY:-90,autoAlpha:0}],stack:[{y:30,rotation:6,autoAlpha:0},{y:0,rotation:0,autoAlpha:1},{y:-20,rotation:-6,autoAlpha:0}]};
+// palette: harmony note, then two alternate schemes
+const PAL=[
+["Analogous pastels with one saturated accent",["Peach cloud","#fff0e6 #ffc6a8 #ff8f6b #7a4a3a #b8e0d2"],["Mint pop","#e6fff4 #a8e6cf #3ecf8e #1f4d3a #ffd3e0"]],
+["Complementary neon on near-black",["Toxic","#05070f #b6ff00 #00f0ff #e6f7ff #8a2be2"],["Ice","#050a14 #7df9ff #3a7bff #cfe8ff #ff4d8d"]],
+["Primary triad on cream, black as the frame",["Sunday","#fffbe6 #000000 #ff90e8 #23a094 #ffc900"],["Poster","#f4f4f0 #000000 #ff5c5c #4d6bfe #ffe14d"]],
+["Warm kraft paper with muted craft accents",["Kraft","#e9dcc3 #3a2e24 #c8553d #588157 #f2c14e"],["Washi","#f6efe2 #2f3e46 #e07a5f #81b29a #f2cc8f"]],
+["Split complementary: deep blue, orange and plum",["Dusk","#2b1b3d #f3d9b1 #ff7b54 #5e60ce #ffd166"],["Desert","#3d2c2e #f7e1d7 #e07a5f #3d405b #81b29a"]],
+["Baby blue, hot pink and chrome silver",["Bubblegum","#ffeaf7 #ff5fd2 #7cc8ff #2b2b6e #d9e2ef"],["Lime soda","#eaffd9 #a6ff00 #00c2ff #1a1a5e #ff8ad8"]],
+["Limited 16-color console palette",["Game Boy","#0f380f #306230 #8bac0f #9bbc0f #e0f8d0"],["Arcade","#1a1c2c #5d275d #b13e53 #ef7d57 #ffcd75"]],
+["Magenta and cyan over deep purple",["Sunset","#1a0b3b #ff2e97 #ff9a3c #ffd319 #00e5ff"],["Miami","#0d0221 #f706cf #00fff1 #fdf200 #541388"]],
+["Vivid gradient field under white glass",["Aurora","#0f2027 #2c5364 #43e97b #38f9d7 #ffffff"],["Sunset glass","#2d1b69 #ff6a88 #ff99ac #ffd1a9 #ffffff"]],
+["Monochrome gray-blue with one muted accent",["Cool gray","#e0e5ec #a3b1c6 #3d4852 #6d5dfc #ffffff"],["Warm sand","#ece3d6 #c9bba6 #4a3f35 #e07a5f #fffaf2"]],
+["Neutral base with three tile accents",["Soft tiles","#f2f2f0 #ffd84d #b8e0ff #ffc9d9 #161616"],["Dark tiles","#111111 #1e1e1e #ffd84d #7cf5c2 #f2f2f2"]],
+["Ink and paper with one editorial red",["Broadsheet","#faf7f2 #1c1c1c #b3261e #d9d1c3 #6b6b6b"],["Magazine","#fffdf7 #111111 #1d4ed8 #f4c95d #e5e0d5"]],
+["Primary red on black and white",["Classic","#ffffff #000000 #e3000f #f2f2f2 #767676"],["Cobalt","#ffffff #000000 #0033a0 #f2f2f2 #767676"]],
+["Neutral grays plus a single ink",["Paper","#ffffff #222222 #777777 #cccccc #f5f5f5"],["Bone","#faf9f6 #1d1d1b #8a8a85 #d6d3cc #ece9e2"]],
+["Clashing brights in equal weight",["Carnival","#ff3d81 #ffe500 #00c2ff #1a0033 #00e0a0"],["Tropic","#ff6b35 #ffd23f #06d6a0 #7b2cbf #1a1a2e"]],
+["Gold on black, ivory for type",["Noir dore","#0e0c09 #c8a45c #e9dcc0 #7a6a40 #1c1812"],["Emerald","#07140f #c8a45c #e8e2cf #1f5a43 #0d241a"]],
+["Pencil ink with a blue marker",["Notebook","#fdfdf8 #223344 #4a6cf7 #fff4a3 #ff8a5b"],["Blueprint","#0b3d91 #ffffff #9fd3ff #ffd166 #5aa9ff"]],
+["Analogous pastel haze with light ink",["Dawn","#fff0f6 #ffd6f0 #cbbcff #cfe9ff #6c63b5"],["Mist","#eefaf8 #cdeee8 #cfe0ff #e6d7ff #4a6a7a"]],
+["Earth tones: clay, sage and sand",["Desert","#f1e3cf #c1572b #7b8f4e #e8c9a0 #4a2c1a"],["Terracotta","#f8ede3 #bf6a4a #8c9a6b #d9b99b #5a3a2a"]],
+["Oxblood, antique gold and deep brown",["Parlour","#2b1d1d #8c2f39 #c9a84c #eadfc6 #3a2626"],["Bottle green","#14231c #2f5d46 #c9a84c #eadfc6 #1f3329"]],
+["Yellow, red and cyan on near-black",["Night city","#0a0a0f #f5f500 #ff003c #00f0ff #1c1c28"],["Neon rain","#0b0f1a #ff2a6d #05d9e8 #d1f7ff #01012b"]],
+["Muted earth tones, low saturation",["Stone","#d9d2c3 #3b3a36 #8a7f6a #cfc6b4 #f1ece0"],["Moss","#d6d8c9 #3a3d34 #7d8467 #bfc3ad #efeee4"]]
+];
+// font pairing: body font (heading is the style's own font) and the reason
+const FP=[
+["Nunito","One rounded family: weight 800 for headings and 400 for body keeps the soft feel."],
+["Share Tech Mono","Wide geometric display over a mono body gives the HUD look and stays readable."],
+["DM Sans","Loud grotesk headings need a quiet, neutral body to balance them."],
+["Lora","Handwriting works for headlines only; a serif body keeps long text readable."],
+["DM Sans","A dramatic display serif over a plain sans keeps the surreal moment in the headline."],
+["Nunito","A rounded body softens the glossy display face without competing with it."],
+["Share Tech Mono","Use the pixel font for headings and labels only; a mono body avoids eye strain."],
+["Jost","Audiowide is loud; a light geometric sans keeps body copy calm."],
+["Plus Jakarta Sans","One clean family. Text sits on blurred color, so use 400 to 500 weights, never thin."],
+["Manrope","Soft low-contrast surfaces need clear letterforms: Poppins headings over Manrope at 400 to 500."],
+["Manrope","One family at 800 and 400. The tiles do the hierarchy work."],
+["Lora","Classic print pairing: high-contrast serif display over a sturdy serif body."],
+["Archivo","One grotesque family; scale and weight make the hierarchy."],
+["DM Sans","Light weights only: 300 for body, 400 for headings. Size creates the hierarchy."],
+["Space Grotesk","A heavy display face needs a restrained grotesk body to hold the chaos."],
+["Jost","Light high-contrast serif display with a geometric sans for small, spaced labels."],
+["DM Sans","Hand-drawn headings with a clean sans body keep the notes legible."],
+["Cormorant Garamond","Ultra-light sans display over a delicate serif body for a dreamy tone."],
+["Jost","Warm italic serif headings with a friendly geometric sans body."],
+["Lora","Engraved-style display with a readable modern serif body."],
+["Archivo","Mono headings for the terminal look; a grotesk body for long reading."],
+["Lora","Soft Mincho display with a gentle serif body and generous line height."]
+];
+// font types: kind, heading class, body class, similar fonts to try (all on Google Fonts)
+const KD={serif:['Serif','Small strokes on the ends of letters. Reads as classic, editorial and elegant.','Playfair Display'],sans:['Sans-serif','No end strokes, often just called sans. Clean and modern, the safe default for interfaces.','Manrope'],display:['Display','Loud decorative faces for big headlines only, never for long text.','Bowlby One'],mono:['Monospace','Every letter takes the same width. Used for code, terminals and data.','Share Tech Mono'],hand:['Handwriting','Pen and marker looks. Personal and playful, so use it sparingly.','Caveat']};
+const FT=[
+["sans","Rounded sans-serif","Rounded sans-serif",[["Quicksand","Rounded sans-serif"],["Fredoka","Rounded display sans"],["Baloo 2","Rounded sans-serif"]]],
+["display","Techno display sans","Monospace",[["Exo 2","Techno sans-serif"],["Rajdhani","Condensed techno sans"],["Michroma","Wide display sans"]]],
+["sans","Grotesque sans-serif","Geometric sans-serif",[["Archivo Black","Heavy grotesque sans"],["Bricolage Grotesque","Grotesque sans-serif"],["Work Sans","Grotesque sans-serif"]]],
+["hand","Marker handwriting","Serif",[["Kalam","Handwriting"],["Shadows Into Light","Handwriting"],["Special Elite","Typewriter slab"]]],
+["serif","High-contrast display serif","Geometric sans-serif",[["Abril Fatface","Didone display serif"],["Playfair Display","Transitional serif"],["Bodoni Moda","Didone serif"]]],
+["display","Rounded display sans","Rounded sans-serif",[["Fredoka","Rounded display sans"],["Lilita One","Chunky display sans"],["Titan One","Bubble display"]]],
+["display","Pixel display","Monospace",[["VT323","Pixel monospace"],["Silkscreen","Pixel display"],["Pixelify Sans","Pixel sans-serif"]]],
+["display","Techno display sans","Geometric sans-serif",[["Monoton","Neon line display"],["Orbitron","Techno display sans"],["Michroma","Wide display sans"]]],
+["sans","Modern sans-serif","Modern sans-serif",[["Inter","Neutral sans-serif"],["Outfit","Geometric sans-serif"],["Figtree","Friendly sans-serif"]]],
+["sans","Geometric sans-serif","Modern sans-serif",[["Montserrat","Geometric sans-serif"],["Nunito Sans","Soft sans-serif"],["Lexend","Wide sans-serif"]]],
+["sans","Modern grotesque sans","Modern grotesque sans",[["Inter","Neutral sans-serif"],["Sora","Geometric sans-serif"],["Onest","Neo-grotesque sans"]]],
+["serif","Didone serif","Serif",[["Fraunces","Soft old-style serif"],["Cormorant","Old-style serif"],["Libre Baskerville","Transitional serif"]]],
+["sans","Neo-grotesque sans (Helvetica style)","Neo-grotesque sans",[["Inter","Neutral sans-serif"],["Public Sans","Neo-grotesque sans"],["Instrument Sans","Neo-grotesque sans"]]],
+["sans","Light geometric sans","Light geometric sans",[["Inter","Neutral sans-serif"],["Hanken Grotesk","Grotesque sans"],["Outfit","Geometric sans-serif"]]],
+["display","Heavy fat-face display","Grotesque sans-serif",[["Rubik Mono One","Heavy mono display"],["Titan One","Bubble display"],["Abril Fatface","Didone display serif"]]],
+["serif","Old-style display serif","Geometric sans-serif",[["Cinzel","Roman capitals serif"],["Bodoni Moda","Didone serif"],["Marcellus","Flared display serif"]]],
+["hand","Casual handwriting","Geometric sans-serif",[["Gloria Hallelujah","Handwriting"],["Indie Flower","Handwriting"],["Architects Daughter","Drafting handwriting"]]],
+["sans","Light geometric sans","Old-style serif",[["Josefin Sans","Vintage geometric sans"],["Raleway","Elegant sans-serif"],["Quicksand","Rounded sans-serif"]]],
+["serif","Calligraphic serif","Geometric sans-serif",[["Crimson Pro","Old-style serif"],["Merriweather","Sturdy serif"],["Cormorant","Old-style serif"]]],
+["serif","Historical old-style serif","Serif",[["Cinzel Decorative","Ornate roman display"],["Libre Caslon Text","Old-style serif"],["UnifrakturCook","Blackletter"]]],
+["mono","Monospace","Grotesque sans-serif",[["Space Mono","Quirky monospace"],["JetBrains Mono","Code monospace"],["VT323","Pixel monospace"]]],
+["serif","Japanese Mincho serif","Serif",[["Shippori Mincho","Japanese serif"],["EB Garamond","Old-style serif"],["Noto Serif","Neutral serif"]]]
+];
+// click a chip to load that font on demand and preview it (runs on the landing page and inside guides)
+function fontBind(root){(root||document).querySelectorAll('.fch').forEach(b=>b.onclick=()=>{const f=b.dataset.f,c=b.closest('.fcard,.slide');
+if(!document.querySelector('link[data-f="'+f+'"]')){const l=document.createElement('link');l.rel='stylesheet';l.dataset.f=f;l.href='https://fonts.googleapis.com/css2?family='+f.replace(/ /g,'+')+'&display=swap';document.head.appendChild(l)}
+c.querySelector('.fsp').style.fontFamily="'"+f+"',system-ui,sans-serif";c.querySelector('.fnm').textContent=f;c.querySelectorAll('.fch').forEach(x=>x.setAttribute('aria-pressed',x===b))})}
+function copyTxt(t,b){const done=()=>{const o=b.dataset.o||b.textContent;b.dataset.o=o;b.textContent='Copied';setTimeout(()=>{b.textContent=o},1300)},fb=()=>{const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();done()};try{navigator.clipboard.writeText(t).then(done,fb)}catch(e){fb()}}
+// runs inside the guide window (serialised with toString), so it must stay self-contained
+function motion(c){const g=window.gsap;if(!g)return;if(matchMedia('(prefers-reduced-motion:reduce)').matches)g.globalTimeline.timeScale(50);
+const $=s=>document.querySelector(s),b=$('#mb'),lab=b.querySelector('span'),ck=b.querySelector('path'),mc=$('#mc'),mi=$('#mi'),st=t=>$('#ms').textContent='State: '+t;
+b.style.position='relative';b.style.overflow='hidden';g.set(ck,{strokeDashoffset:1});
+const bs=getComputedStyle(b).boxShadow,ib=getComputedStyle(mi).boxShadow,r0=g.getProperty(b,'rotation'),isn=c.fx=='inset'?c.sh.split(', ').map(s=>'inset '+s).join(', '):'';
+if(c.fx=='glow')g.set(b,{filter:'drop-shadow(0 0 0px '+c.ac+')'});
+let on=0;
+b.onpointerenter=()=>{on=1;st('hover');const v={y:c.hy,scale:c.hs,duration:c.d,ease:c.e};if(c.fx=='glow')v.filter='drop-shadow(0 0 12px '+c.ac+')';if(c.fx=='tilt')v.rotation=r0+g.utils.random(-3,3);g.to(b,v)};
+b.onpointerleave=()=>{on=0;st('idle');const v={y:0,x:0,scaleX:1,scaleY:1,duration:c.d,ease:c.e};if(c.fx=='glow')v.filter='drop-shadow(0 0 0px '+c.ac+')';if(c.fx=='tilt')v.rotation=r0;if(c.fx=='inset')v.boxShadow=bs;g.to(b,v)};
+b.onpointerdown=()=>{st('pressed');const v={x:c.px,y:(on?c.hy:0)+c.px,duration:.1,ease:'power2.out'};if(c.fx=='squish'){v.scaleX=1.1;v.scaleY=c.ps}else{v.scaleX=v.scaleY=c.ps}if(c.fx=='inset')v.boxShadow=isn;g.to(b,v);
+if(c.fx=='glitch')g.fromTo(b,{x:-5},{x:5,duration:.04,repeat:7,yoyo:true,ease:'none',onComplete:()=>g.set(b,{x:0})})};
+b.onpointerup=()=>{st(on?'hover':'idle');const s=on?c.hs:1,v={x:0,y:on?c.hy:0,scaleX:s,scaleY:s,duration:c.d,ease:c.e};if(c.fx=='inset')v.boxShadow=bs;g.to(b,v)};
+b.addEventListener('click',e=>{const r=b.getBoundingClientRect(),d=document.createElement('i');
+d.style.cssText='position:absolute;pointer-events:none;border-radius:50%;background:currentColor;width:40px;height:40px;margin:-20px;left:'+(e.clientX-r.left)+'px;top:'+(e.clientY-r.top)+'px';
+b.appendChild(d);g.fromTo(d,{scale:0,opacity:.35},{scale:6,opacity:0,duration:.6,ease:'power2.out',onComplete:()=>d.remove()});
+st('success');lab.textContent='Saved';g.to(ck,{strokeDashoffset:0,duration:.4,ease:'power2.out'});
+setTimeout(()=>{lab.textContent='Save changes';g.to(ck,{strokeDashoffset:1,duration:.2});st(on?'hover':'idle')},1600)});
+mc.onpointerenter=()=>g.to(mc,{y:-8,duration:c.d,ease:c.e});mc.onpointerleave=()=>g.to(mc,{y:0,duration:c.d,ease:c.e});
+mi.onfocus=()=>g.to(mi,{scale:1.03,boxShadow:'0 0 0 4px '+c.rg,duration:c.d,ease:c.e});mi.onblur=()=>g.to(mi,{scale:1,boxShadow:ib,duration:c.d,ease:c.e});
+const sl=[...document.querySelectorAll('.car .card')],dt=[...document.querySelectorAll('.dt')];let cur=0,busy=0;
+g.set(sl,{autoAlpha:0});g.set(sl[0],{autoAlpha:1});
+const go=(n,dir)=>{if(busy||n==cur)return;const f={...c.t[0]},o={...c.t[2]},dd=Math.max(c.d,.35);
+if(c.c=='slide'){f.x*=dir;o.x*=dir}if(c.c=='stack'){f.rotation*=dir;o.rotation*=dir}if(c.c=='flip'){f.rotationY*=dir;o.rotationY*=dir}
+busy=1;g.to(sl[cur],{...o,duration:dd,ease:c.e});g.fromTo(sl[n],f,{...c.t[1],duration:dd,ease:c.e,onComplete:()=>busy=0});
+dt[cur].style.opacity=.3;dt[n].style.opacity=1;cur=n};
+$('#nx').onclick=()=>go((cur+1)%3,1);$('#pv').onclick=()=>go((cur+2)%3,-1);dt.forEach((d,k)=>d.onclick=()=>go(k,k>cur?1:-1));
+$('#pgb').onclick=()=>{const h=(window.opener||window.parent).pgHTML(c.i),w=window.open('','_blank');if(w){w.document.write(h);w.document.close()}else{document.open();document.write(h);document.close()}}}
+// single source for the editable snippet shown in the guide and loaded in the playground
+function mkCode(i){const [me,md,mh,ms,mp,mx,,mc]=M[i],tr=T[mc],J=JSON.stringify;
+return `// ${S[i][0]}: edit any value and the preview updates as you type\nconst cfg={y:${mh},scale:${ms},press:${mp},shift:${mx},dur:${md},ease:'${me}'};\nconst slide={\n  from:${J(tr[0])},\n  to:${J(tr[1])},\n  out:${J(tr[2])}\n};\n\n// button: hover, press, click draws the check\nbtn.onpointerenter=()=>gsap.to(btn,{y:cfg.y,scale:cfg.scale,duration:cfg.dur,ease:cfg.ease});\nbtn.onpointerleave=()=>gsap.to(btn,{y:0,scale:1,duration:cfg.dur,ease:cfg.ease});\nbtn.onpointerdown=()=>gsap.to(btn,{scale:cfg.press,x:cfg.shift,y:cfg.y+cfg.shift,duration:.1});\nbtn.onpointerup=()=>gsap.to(btn,{scale:cfg.scale,x:0,y:cfg.y,duration:cfg.dur,ease:cfg.ease});\nbtn.onclick=()=>{\n  gsap.fromTo(check,{strokeDashoffset:1},{strokeDashoffset:0,duration:.4});\n  gsap.to(check,{strokeDashoffset:1,delay:1.4,duration:.2});\n};\n\n// card: hover lift\ncard.onpointerenter=()=>gsap.to(card,{y:-8,duration:cfg.dur,ease:cfg.ease});\ncard.onpointerleave=()=>gsap.to(card,{y:0,duration:cfg.dur,ease:cfg.ease});\n\n// carousel: slides[], next, prev are provided\nlet i=0;\nconst go=d=>{\n  const n=(i+d+slides.length)%slides.length;\n  gsap.to(slides[i],{...slide.out,duration:.5,ease:cfg.ease});\n  gsap.fromTo(slides[n],slide.from,{...slide.to,duration:.5,ease:cfg.ease});\n  i=n;\n};\nnext.onclick=()=>go(1);\nprev.onclick=()=>go(-1);`}
+// css text shown in the playground: tokens, base layout, component styles
+function mkCss(i){const [n,bg,fg,ac,f,css]=S[i],[,r,sh,u,ts,,,,,,x]=G[i];
+const pp=c=>c.replace(/\{/g,' {\n  ').replace(/;/g,';\n  ').replace(/\}/g,'\n}\n').replace(/\n  \n\}/g,'\n}');
+return `/* ${n}: tokens. --bg, --fg, --ac and --f drive the base styles.\n   The other tokens are reference values used by the component styles below. */\n:root{\n  --bg:${bg};\n  --fg:${fg};\n  --ac:${ac};\n  --f:'${f}';\n  --support-1:${x[0]};\n  --support-2:${x[1]};\n  --radius:${r};\n  --shadow:${sh};\n  --space:${u}px;\n  --type-ratio:${ts};\n}\n\n/* Base layout */\n${pp(BASE)}\n/* ${n}: component styles */\n${pp(css)}`}
+// runs inside the playground window (serialised with toString), so it must stay self-contained
+function play(css,js,pvh,shell){const $=s=>document.querySelector(s),ta=$('#ta'),fr=$('#fr'),er=$('#er'),tabs=[...document.querySelectorAll('.tabs button')];
+const src=[css,js],val=[css,js];let k=0,t;ta.value=css;fr.srcdoc=shell;
+const runCss=()=>{er.textContent='';fr.contentDocument.getElementById('u').textContent=val[0]};
+const runJs=()=>{er.textContent='';const w=fr.contentWindow,d=fr.contentDocument,g=w.gsap;if(!g){er.textContent='GSAP did not load';return}
+g.globalTimeline.clear();g.globalTimeline.timeScale(matchMedia('(prefers-reduced-motion:reduce)').matches?50:1);d.getElementById('root').innerHTML=pvh;const q=s=>d.querySelector(s),sl=[...d.querySelectorAll('.car .card')];g.set(sl,{autoAlpha:0});g.set(sl[0],{autoAlpha:1});
+try{new w.Function('gsap','btn','card','check','slides','next','prev',val[1])(g,q('#b'),q('#c'),q('#b path'),sl,q('#nx'),q('#pb'))}catch(e){er.textContent='Motion: '+e.message}};
+const go=()=>k?runJs():runCss();
+fr.onload=()=>{runCss();runJs()};
+tabs.forEach((b,j)=>b.onclick=()=>{val[k]=ta.value;k=j;ta.value=val[k];tabs.forEach((x,m)=>x.setAttribute('aria-selected',m==j));er.textContent=''});
+ta.oninput=()=>{val[k]=ta.value;clearTimeout(t);t=setTimeout(go,k?350:120)};
+ta.onkeydown=e=>{if(e.key=='Tab'){e.preventDefault();document.execCommand('insertText',false,'  ')}};
+$('#rn').onclick=go;$('#rs').onclick=()=>{val[k]=src[k];ta.value=src[k];go()};
+$('#cp').onclick=()=>{try{navigator.clipboard.writeText(ta.value);er.textContent='Copied'}catch(e){er.textContent='Select the text and copy it'}}}
+const PGB=`body{margin:0;background:#161616;color:#e8e6e0;font:14px system-ui,sans-serif}.pg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);height:100vh}.ed{display:flex;flex-direction:column;min-height:0}.ed header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 16px}.ed b{margin-right:auto}#er{color:#ffd9a8;font-size:12px}.tb{background:#ffffff22;color:#fff;border:0;border-radius:4px;padding:6px 12px;cursor:pointer;font:13px system-ui,sans-serif}.tabs{display:flex;gap:2px;padding:0 12px;border-bottom:1px solid #fff2}.tabs button{background:none;border:0;border-bottom:2px solid transparent;color:#9d9a93;padding:10px 14px;cursor:pointer;font:13px system-ui,sans-serif}.tabs button[aria-selected=true]{color:#fff;border-color:#fff}#ta{flex:1;min-height:0;width:100%;background:#161616;color:#e8e6e0;border:0;padding:16px;font:13px/1.6 ui-monospace,monospace;resize:none;white-space:pre;overflow:auto;tab-size:2;outline:none;margin:0}#fr{width:100%;height:100%;border:0;background:#fff}@media(max-width:800px){.pg{grid-template-columns:minmax(0,1fr);height:auto}#ta{height:50vh;flex:none}#fr{height:80vh}}`;
+function pgHTML(i){const n=S[i][0],E=v=>JSON.stringify(v).replace(/<\//g,'<\\/');
+const pvh=`<nav><b>Studio North</b><span>Work</span><span>About</span><span>Contact</span></nav><main><h1>Design that feels like something</h1><p>Same words, different world. Compare how ${n} shapes type, color and form.</p><button class="btn" id="b"><span>Save changes</span><svg viewBox="0 0 24 24" width="18" height="18" style="vertical-align:-3px;margin-left:8px"><path d="M4 12l5 5L20 6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></button><button class="btn alt">Secondary</button><div class="card" id="c"><h3>Harbour Café</h3><p>Hover to lift.</p></div><input placeholder="Your email"><div class="car"><div class="card"><h3>Harbour Café</h3><p>Identity and signage for a corner café.</p></div><div class="card"><h3>Studio Loft</h3><p>A booking site for a photo studio.</p></div><div class="card"><h3>Night Market</h3><p>Posters and wayfinding for a street fair.</p></div></div><div class="cc"><button class="btn alt" id="pb">Prev</button><button class="btn alt" id="nx">Next</button></div></main>`;
+const shell=`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="${FONTS}"><style>${GB}</style><style id="u"></style><body><div id="root">${pvh}</div><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"><\/script>`;
+return `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${n} code playground</title><style>${PGB}</style><body><div class="pg"><section class="ed"><header><b>${n} code playground</b><span id="er"></span><button class="tb" id="rn">Run</button><button class="tb" id="rs">Reset</button><button class="tb" id="cp">Copy</button></header><div class="tabs"><button aria-selected="true">CSS</button><button aria-selected="false">Motion (GSAP)</button></div><textarea id="ta" spellcheck="false" aria-label="Code"></textarea></section><iframe id="fr" title="Live preview"></iframe></div><script>(${play})(${E(mkCss(i))},${E(mkCode(i))},${E(pvh)},${E(shell)})<\/script></body></html>`}
+// type guide data. f: fonts as "name|class|best for"; vf: variable font axis string; s: fallback stack; sp: specs; c: colour pairs "bg fg label"
+const TD={
+serif:{f:["Playfair Display|Transitional to Didone serif|Editorial headlines, luxury brands","Fraunces|Soft old-style serif|Friendly brands, long headlines","Cormorant Garamond|Elegant old-style serif|Fashion, large display sizes only","Lora|Contemporary serif|Article and blog body text","Libre Baskerville|Transitional serif|Long reading with a print feel","Merriweather|Sturdy screen serif|Small sizes and low-res screens","DM Serif Display|High-contrast display serif|Hero headlines","Bodoni Moda|Didone serif|Magazine mastheads, fashion"],vf:"Fraunces:wght@100..900",s:"Georgia,serif",
+tr:["Small strokes on letter ends","Thick and thin contrast","Warm, trusted tone","Strong at large sizes"],
+rec:"Slow word-by-word reveals and gentle fades. Avoid bouncy motion; it fights the formal tone.",
+sp:["17 to 20px","1.5 to 1.7","0 to 0.01em","60 to 75 characters","400 body, 600 to 900 headlines","Hairline weights below 24px"],
+pair:"Serif headings over a neutral sans body (Inter, DM Sans), or a sturdy serif body under a sans heading.",
+a:["Thin hairlines vanish at small sizes, so use display serifs at 28px or larger.","Use a sturdy text serif (Lora, Merriweather) for body copy.","Avoid all caps for more than a few words; it slows reading."],
+c:["#faf7f2 #1c1c1c Ink on paper","#2b1d1d #f1e3cf Cream on espresso","#f6efe0 #1b2a49 Navy on ivory","#0e0c09 #c8a45c Gold on black","#f7e6e6 #8c2f39 Oxblood on blush","#e9e4d8 #4a4036 Sepia on linen"],
+ct:"Serif loves warm neutrals. Pure black on pure white looks harsh; try #1c1c1c on #faf7f2."},
+sans:{f:["Inter|Neutral UI sans|Dashboards and product UI","Manrope|Modern semi-rounded sans|SaaS and marketing sites","DM Sans|Low-contrast geometric sans|Clean brand sites","Poppins|Geometric sans|Friendly headlines and buttons","Space Grotesk|Quirky grotesque|Tech and startups","Work Sans|Workhorse grotesque|Long UI copy","Nunito|Rounded sans|Soft, approachable brands","Outfit|Geometric sans|Modern headlines"],vf:"Inter:wght@100..900",s:"system-ui,sans-serif",
+tr:["No end strokes","Even stroke weight","Neutral, modern tone","Strong at small UI sizes"],
+rec:"Quick, precise motion: short slides and mask reveals. Weight shifts on hover feel natural on variable sans fonts.",
+sp:["15 to 18px","1.45 to 1.6","0 to 0.01em, -0.02em on big headings","55 to 75 characters","400 body, 500 to 700 UI, 800 display","Thin 100 to 200 weights for body"],
+pair:"One sans family can do everything. For contrast, set a serif or display face for headlines.",
+a:["Keep body text at 16px or larger.","Check that I, l and 1 are distinguishable in UI fonts.","Use real weight differences, not only colour, to show hierarchy."],
+c:["#ffffff #111111 Black on white","#111111 #f5f5f5 Off-white on black","#f2f2f0 #161616 Charcoal on stone","#0f172a #e2e8f0 Slate on navy","#e8f0ff #1d3a8a Blue on mist","#ffffff #3f3f46 Grey secondary text"],
+ct:"Use one dark ink for headings and a 70 to 80 percent tint for secondary text; keep both above 4.5:1."},
+display:{f:["Unbounded|Wide geometric display|Bold hero titles","Bowlby One|Heavy fat-face display|Posters and loud headlines","Righteous|Rounded retro display|Playful brands","Audiowide|Techno display|Gaming and futuristic UI","Orbitron|Sci-fi display|HUDs and sci-fi","Abril Fatface|Didone fat face|Editorial covers","Bungee|Signage display|Labels and signage","Press Start 2P|Pixel display|Retro games"],vf:"Unbounded:wght@200..900",s:"system-ui,sans-serif",
+tr:["Built for large sizes","Strong personality","Often a single weight","Short text only"],
+rec:"Go big: letter-by-letter entrances, scale pops and stagger waves. Display faces can take dramatic motion.",
+sp:["40px and up","1.0 to 1.15","-0.02 to 0.04em; wide fonts need tighter tracking","Under 8 words per line","Usually one weight (400)","Using it for body text"],
+pair:"Pair with a quiet neutral sans body (Inter, DM Sans). Let the display font be the only loud voice.",
+a:["Keep display text short; it is slow to read.","Do not set it below 24px.","Do not use it for instructions or error messages."],
+c:["#ffe500 #1a0033 Violet on yellow","#1a0033 #ffe500 Yellow on violet","#00f0ff #05070f Black on cyan","#05070f #00f0ff Cyan on black","#ff3d81 #ffffff White on hot pink","#111111 #f5f500 Acid on black"],
+ct:"Display text can take saturated colour, but check contrast. Bright on bright usually fails."},
+mono:{f:["JetBrains Mono|Code monospace|Code editors and docs","Space Mono|Quirky geometric mono|Brand headings, tech","Share Tech Mono|Techno mono|HUD and terminal UI","IBM Plex Mono|Humanist mono|Documentation","Roboto Mono|Neutral mono|Code blocks","Fira Code|Developer mono|Developer tools","VT323|Pixel terminal mono|Retro terminals","Courier Prime|Typewriter mono|Scripts and literary"],vf:"JetBrains Mono:wght@100..800",s:"ui-monospace,monospace",
+tr:["Every letter the same width","Technical, honest tone","Great for data","Aligns in columns"],
+rec:"Typewriter reveals and cursor blinks are made for mono. Add scramble or count-up effects for data.",
+sp:["14 to 16px","1.5 to 1.7","0 to 0.02em","60 to 80 characters","400 body, 700 emphasis","Long paragraphs in mono"],
+pair:"Mono for labels, code and data, with a sans body for reading.",
+a:["Wide letters tire eyes in long paragraphs.","Keep lines under 80 characters.","Check that zero and capital O are distinct in code."],
+c:["#0d1117 #c9d1d9 Terminal grey on night","#001b0f #39ff88 Green phosphor","#1e1e2e #cdd6f4 Soft pastel on dark","#fdf6e3 #586e75 Solarized light","#000000 #f5f500 Yellow on black","#ffffff #24292f Code on white"],
+ct:"Dark backgrounds suit mono, but avoid pure white text; soften to #c9d1d9 to reduce glare."},
+hand:{f:["Caveat|Casual brush script|Quotes and signatures","Kalam|Marker handwriting|Notes and captions","Patrick Hand|Neat print hand|Readable annotations","Shadows Into Light|Light marker|Doodle styles","Gloria Hallelujah|Loose handwriting|Playful labels","Indie Flower|Round friendly hand|Kids and craft","Architects Daughter|Drafting hand|Wireframes and sketches","Permanent Marker|Bold marker|Posters and stickers"],vf:"Caveat:wght@400..700",s:"cursive",
+tr:["Pen or marker feel","Irregular strokes","Personal tone","Headlines and notes only"],
+rec:"Draw-on and wobble motion suit handwriting. Keep it light: a small rotation or slide, never rigid.",
+sp:["20 to 28px (hand fonts run small)","1.3 to 1.5","0 to 0.02em","30 to 50 characters","400, bold if available","Paragraphs and UI labels"],
+pair:"Hand for accents only, over a clean sans or serif body.",
+a:["Go up one size step; hand fonts look smaller than their pixel size.","Avoid for forms and error messages.","Keep contrast high on textured backgrounds."],
+c:["#fdfdf8 #223344 Ink on notebook","#e9dcc3 #3a2e24 Brown on kraft","#fff7d6 #2b2b2b Black on sticky yellow","#1f3a2e #f4f1de Chalk on green","#ffffff #1d4ed8 Blue marker on white","#fde8ef #8c1d3a Berry on blush"],
+ct:"Think pen colours: ink blue, black or brown on paper tones. Skip neon for handwriting."}
+};
+const DM=[['letters','Letter stagger','Characters rise into place. Good for hero titles.',"gsap.from(chars,{yPercent:110,opacity:0,stagger:.035})"],['words','Word mask reveal','Words slide up from behind a mask. Calm and editorial.',"gsap.from(words,{yPercent:120,stagger:.12})"],['weight','Weight on hover','Hover the letters. Needs a variable font, so this one uses the variable font for the family.',"gsap.to(char,{fontWeight:900})"],['type','Typewriter','Characters appear one at a time.',"gsap.from(chars,{autoAlpha:0,stagger:.06})"],['wave','Wave','A looping stagger. Use it for playful, short text.',"gsap.to(chars,{yPercent:-28,stagger:{each:.06,repeat:-1,yoyo:true}})"],['shine','Shimmer','A moving highlight across the text using a gradient clip.',"gsap.fromTo(el,{backgroundPosition:'200% 0'},{backgroundPosition:'-200% 0',repeat:-1})"]];
+// runs inside the type guide window (serialised with toString), so it must stay self-contained
+function tyPage(c){const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],g=window.gsap;
+const L=h=>{const v=[1,3,5].map(k=>{const x=parseInt(h.substr(k,2),16)/255;return x<=.03928?x/12.92:((x+.055)/1.055)**2.4});return .2126*v[0]+.7152*v[1]+.0722*v[2]},R=(a,b)=>{const x=L(a),y=L(b);return ((Math.max(x,y)+.05)/(Math.min(x,y)+.05)).toFixed(1)};
+const grid=$('#fg'),set=(k,v)=>grid.style.setProperty(k,v),ids=['lsz','lwt','ltr','llh','lfc','lbg'],def={lsz:40,lwt:400,ltr:0,llh:1.15,lfc:'#f1eee8',lbg:'#2b2b2b'};
+const upd=()=>{const v=id=>$('#'+id).value;set('--sz',v('lsz')+'px');set('--wt',v('lwt'));set('--tr',v('ltr')+'em');set('--lh',v('llh'));set('--fc',v('lfc'));set('--bg2',v('lbg'));
+const r=R(v('lfc'),v('lbg'));$('#lro').textContent=r+':1, '+(r>=7?'AAA':r>=4.5?'AA':r>=3?'large text only':'fails');['lsz','lwt','ltr','llh'].forEach(id=>$('#'+id+'v').textContent=v(id))};
+ids.forEach(id=>$('#'+id).oninput=upd);
+$('#ltx').oninput=e=>$$('.sp').forEach(s=>s.textContent=e.target.value||'Type something');
+$('#lrs').onclick=()=>{ids.forEach(id=>$('#'+id).value=def[id]);$('#ltx').value='Design that feels like something';$$('.sp').forEach(s=>s.textContent='Design that feels like something');upd()};upd();
+const cp=(t,b)=>{const done=()=>{const o=b.textContent;b.textContent='Copied';setTimeout(()=>{b.textContent=o},1200)};
+const fb=()=>{const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();done()};
+try{navigator.clipboard.writeText(t).then(done,fb)}catch(e){fb()}};
+$$('[data-cp]').forEach(b=>b.onclick=()=>cp(b.dataset.cp,b));
+let cur=c.fonts[0];
+const split=(el,m)=>{const t=el.dataset.t,out=[];el.innerHTML='';
+if(m=='w'){t.split(' ').forEach(w=>{const k=document.createElement('span'),i=document.createElement('span');k.style.cssText='display:inline-block;overflow:hidden;vertical-align:bottom';i.style.display='inline-block';i.textContent=w+'\u00a0';k.appendChild(i);el.appendChild(k);out.push(i)})}
+else{[...t].forEach(ch=>{const s=document.createElement('span');s.style.display='inline-block';s.textContent=ch==' '?'\u00a0':ch;el.appendChild(s);out.push(s)})}return out};
+const D={letters:el=>g.from(split(el),{yPercent:110,opacity:0,stagger:.035,duration:.7,ease:'power4.out'}),
+words:el=>g.from(split(el,'w'),{yPercent:120,stagger:.12,duration:.9,ease:'power4.out'}),
+weight:el=>{split(el).forEach(s=>{s.style.fontWeight=300;s.onpointerenter=()=>g.to(s,{fontWeight:900,duration:.25});s.onpointerleave=()=>g.to(s,{fontWeight:300,duration:.6})})},
+type:el=>g.from(split(el),{autoAlpha:0,duration:.01,stagger:.06}),
+wave:el=>g.to(split(el),{yPercent:-28,duration:.5,ease:'sine.inOut',stagger:{each:.06,repeat:-1,yoyo:true}}),
+shine:el=>{el.textContent=el.dataset.t;g.fromTo(el,{backgroundPosition:'200% 0'},{backgroundPosition:'-200% 0',duration:2.6,repeat:-1,ease:'none'})}};
+$$('.stg').forEach(s=>s.textContent=s.dataset.t);
+const rm=matchMedia('(prefers-reduced-motion:reduce)').matches,run=el=>{if(!g)return;g.killTweensOf([el,...el.querySelectorAll('span')]);el.style.fontFamily="'"+(el.dataset.d=='weight'?c.vf:cur)+"',"+c.s;if(rm&&el.dataset.d!='weight'){el.textContent=el.dataset.t;return}D[el.dataset.d](el)};
+$$('.rp').forEach(b=>b.onclick=()=>run($('.stg[data-d="'+b.dataset.d+'"]')));
+const pickF=f=>{cur=f;$$('.mfc').forEach(x=>x.setAttribute('aria-pressed',x.dataset.f==f));$$('.stg').forEach(run)};
+$$('.mfc').forEach(b=>b.onclick=()=>pickF(b.dataset.f));
+$$('[data-an]').forEach(b=>b.onclick=()=>{pickF(b.dataset.an);$('#motion').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})});
+if(window.IntersectionObserver){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!e.target.dataset.ran){e.target.dataset.ran=1;run(e.target)}}),{threshold:.4});$$('.stg').forEach(s=>io.observe(s))}else $$('.stg').forEach(run)}
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const TYCSS=`*{box-sizing:border-box}html{scroll-padding-top:70px}body{margin:0;background:#232323;color:#f1eee8;font:16px/1.55 system-ui,sans-serif;overflow-x:clip}a{color:inherit}
+.tn{position:sticky;top:0;z-index:5;display:flex;gap:18px;align-items:center;padding:12px max(5vw,calc(50% - 600px));background:#232323f2;backdrop-filter:blur(10px);border-bottom:1px solid #ffffff14;overflow-x:auto;white-space:nowrap}
+.tn b{margin-right:auto;flex:none}.tn a{text-decoration:none;opacity:.75;font-size:14px;flex:none}.tn a:hover{opacity:1}
+.w{max-width:1200px;margin:0 auto;padding:0 5vw}section{padding:44px 0}header.th{padding:56px 0 8px}
+.eb{font:600 12px system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;opacity:.6}
+h1{font-size:clamp(48px,11vw,128px);line-height:.95;margin:8px 0 16px;font-weight:400;overflow-wrap:anywhere}
+.lead{font-size:18px;max-width:62ch;color:#c9c5bd;margin:0 0 14px}.cp{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.cp span,.cl{font:13px system-ui,sans-serif;border:1px solid #ffffff2b;border-radius:20px;padding:4px 12px}
+h2{font:700 clamp(24px,3.4vw,36px)/1.1 system-ui,sans-serif;margin:0 0 6px}.sub{color:#b8b4ac;margin:0 0 22px;max-width:64ch}
+.lab{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));gap:14px;background:#2b2b2b;border-radius:14px;padding:18px}
+.lab label{display:flex;flex-direction:column;gap:6px;font:600 12px system-ui,sans-serif}.lab output{opacity:.6;font-weight:400}
+.lab input[type=text]{background:#1c1c1c;border:1px solid #ffffff2b;border-radius:8px;color:inherit;padding:10px;font:15px system-ui,sans-serif;width:100%}
+.lab input[type=color]{width:100%;height:36px;border:0;background:none;padding:0}.lab input[type=range]{width:100%}
+.lab button,.tb{background:#ffffff1a;color:inherit;border:0;border-radius:18px;padding:7px 14px;cursor:pointer;font:600 13px system-ui,sans-serif}
+.fg{--sz:40px;--wt:400;--tr:0em;--lh:1.15;--fc:#f1eee8;--bg2:#2b2b2b;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:14px;margin-top:16px}
+.fc2{background:#2b2b2b;border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.sp{background:var(--bg2);color:var(--fc);font-size:var(--sz);font-weight:var(--wt);letter-spacing:var(--tr);line-height:var(--lh);padding:20px;min-height:150px;overflow-wrap:anywhere}
+.fi{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}.fi p{margin:0;font-size:13px;color:#b8b4ac}.cl{align-self:flex-start;opacity:.8}.ac{display:flex;gap:8px;margin-top:auto;padding-top:8px}
+.mfs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}.mfc{font:13px system-ui,sans-serif;padding:5px 12px;border-radius:16px;border:1px solid #ffffff3a;background:none;color:inherit;cursor:pointer}.mfc[aria-pressed=true]{background:#f1eee8;color:#232323}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}.dm{background:#2b2b2b;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px}.dm h3{margin:0;font-size:16px}.dm p{margin:0;font-size:13px;color:#b8b4ac}
+.stg{min-height:96px;display:flex;align-items:center;flex-wrap:wrap;font-size:clamp(28px,5vw,44px);line-height:1.1;overflow:hidden;padding:6px 0}
+.shine{background:linear-gradient(90deg,#777 0,#fff 45%,#777 90%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+code{font:12px/1.5 ui-monospace,monospace;color:#c9c5bd;overflow-wrap:anywhere}.rp{align-self:flex-start}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px}.cc{display:flex;align-items:center;gap:14px;padding:18px;border-radius:12px}.cc .aa{font-size:44px;line-height:1}.cc small{display:block;font:12px/1.5 system-ui,sans-serif;opacity:.85}.cc b{font:600 14px system-ui,sans-serif}
+.tip{margin-top:14px;padding:14px 16px;border-left:3px solid #f1eee8;background:#2b2b2b;border-radius:0 10px 10px 0}
+dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px;margin:0}dl div{background:#2b2b2b;border-radius:12px;padding:14px 16px}dt{font:600 12px system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;opacity:.6}dd{margin:4px 0 0}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:14px;margin-top:14px}.two>div{background:#2b2b2b;border-radius:14px;padding:18px}.two h3{margin:0 0 8px;font-size:16px}.two ul{margin:0;padding-left:18px}
+pre{background:#161616;border-radius:12px;padding:16px;overflow:auto;margin:14px 0 8px;font:12.5px/1.6 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+footer{padding:36px 5vw;border-top:1px solid #ffffff14;color:#8d8a84;font-size:13px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}`;
+function tyHTML(k){const [nm,desc]=KD[k],d=TD[k],fl=d.f.map(s=>s.split('|')),lead=fl[0][0],vn=d.vf.split(':')[0],J=v=>JSON.stringify(v).replace(/<\//g,'<\\/'),
+used=S.map((s,i)=>FT[i][0]==k?s[0]:null).filter(Boolean),
+fams=[...new Set([...fl.map(f=>f[0]),vn])].map(f=>'family='+(f==vn?d.vf:f).replace(/ /g,'+')).join('&'),
+url='https://fonts.googleapis.com/css2?'+fams+'&display=swap',ff=f=>`'${f}',${d.s}`;
+const cards=fl.map(([f,cl,bf])=>`<article class="fc2"><div class="sp" style="font-family:${ff(f)}">Design that feels like something</div><div class="fi"><b>${f}</b><span class="cl">${cl}</span><p>Best for: ${bf}</p><div class="ac"><button class="tb" data-cp="${esc('font-family:'+ff(f)+';')}">Copy CSS</button><button class="tb" data-an="${f}">Animate</button></div></div></article>`).join('');
+const chips=fl.map(([f],j)=>`<button class="mfc" data-f="${f}" aria-pressed="${j==0}">${f}</button>`).join('');
+const demos=DM.map(([id,t,ds,cd])=>`<div class="dm"><h3>${t}</h3><p>${ds}</p><div class="stg${id=='shine'?' shine':''}" data-d="${id}" data-t="Typography in motion"></div><button class="tb rp" data-d="${id}">Replay</button><code>${esc(cd)}</code></div>`).join('');
+const cols=d.c.map(s=>{const [b,f,...l]=s.split(' '),r=cr(f,b);return `<div class="cc" style="background:${b};color:${f}"><span class="aa" style="font-family:${ff(lead)}">Aa</span><div><b>${l.join(' ')}</b><small>${f} on ${b}<br>${r}:1, ${ok(r,3)}</small></div></div>`}).join('');
+const spl=['Body size','Line height','Tracking','Line length','Weights','Watch out for'],
+code=`<link href="${url}" rel="stylesheet">\n\nbody{\n  font-family:${ff(lead)};\n  font-size:${d.sp[0].split(' ')[0]}px;\n  line-height:${d.sp[1].split(' ')[0]};\n}`;
+const cfg={fonts:fl.map(f=>f[0]),vf:vn,s:d.s};
+return `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${nm} type guide</title><link rel="stylesheet" href="${url}"><style>${TYCSS}</style><body>
+<nav class="tn"><b>${nm}</b><a href="#lab">Type lab</a><a href="#fonts">Fonts</a><a href="#motion">Animation</a><a href="#color">Colour</a><a href="#spec">Specs</a></nav>
+<div class="w"><header class="th"><span class="eb">Type family</span><h1 style="font-family:${ff(lead)}">${nm}</h1><p class="lead">${desc}</p><div class="cp">${d.tr.map(x=>`<span>${x}</span>`).join('')}</div><p class="lead">Used by ${used.length} styles: ${used.join(', ')}.</p></header>
+<section id="lab"><h2>Type lab</h2><p class="sub">Change the text, size, weight, spacing and colours. Every font below updates live.</p>
+<div class="lab"><label style="grid-column:1/-1">Sample text<input id="ltx" type="text" value="Design that feels like something"></label>
+<label>Size <output id="lszv">40</output><input id="lsz" type="range" min="16" max="96" value="40"></label><label>Weight <output id="lwtv">400</output><input id="lwt" type="range" min="100" max="900" step="100" value="400"></label>
+<label>Tracking (em) <output id="ltrv">0</output><input id="ltr" type="range" min="-0.05" max="0.3" step="0.01" value="0"></label><label>Line height <output id="llhv">1.15</output><input id="llh" type="range" min="0.9" max="2" step="0.05" value="1.15"></label>
+<label>Text colour<input id="lfc" type="color" value="#f1eee8"></label><label>Background<input id="lbg" type="color" value="#2b2b2b"></label>
+<label>Contrast<output id="lro" style="opacity:1;font-size:14px"></output><button id="lrs" type="button">Reset</button></label></div>
+<div class="fg" id="fg">${cards}</div></section>
+<section id="fonts"><h2>Where each font fits</h2><p class="sub">Weight only changes fonts that ship several weights; the rest use their nearest one.</p><dl>${d.sp.map((v,j)=>`<div><dt>${spl[j]}</dt><dd>${v}</dd></div>`).join('')}</dl></section>
+<section id="motion"><h2>Typography animation</h2><p class="sub">${d.rec} Pick a font, then replay any effect.</p><div class="mfs">${chips}</div><div class="dg">${demos}</div></section>
+<section id="color"><h2>Typography colour</h2><p class="sub">Six text and background pairs that suit ${nm.toLowerCase()} type, with real contrast ratios. Text needs 4.5:1; large text needs 3:1.</p><div class="cg">${cols}</div><div class="tip"><b>Colour tip.</b> ${d.ct}</div></section>
+<section id="spec"><h2>Pairing and accessibility</h2><div class="two"><div><h3>Pairing</h3><p>${d.pair}</p></div><div><h3>Accessibility</h3><ul>${d.a.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>
+<pre>${esc(code)}</pre><button class="tb" data-cp="${esc(code)}">Copy starter CSS</button></section></div>
+<footer>${nm} type guide. Fonts load from Google Fonts.</footer>
+<script>document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})}})<\/script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"><\/script><script>(${tyPage})(${J(cfg)})<\/script></body></html>`}
+const C={s:'Soft',d:'Dark',b:'Bold',c:'Calm',r:'Retro'};
+const hx=h=>{h=h.slice(0,7);return h.length==4?'#'+[...h.slice(1)].map(c=>c+c).join(''):h};
+const lum=h=>{h=hx(h);const c=[1,3,5].map(k=>{const v=parseInt(h.substr(k,2),16)/255;return v<=.03928?v/12.92:((v+.055)/1.055)**2.4});return .2126*c[0]+.7152*c[1]+.0722*c[2]};
+const cr=(a,b)=>{const x=lum(a),y=lum(b);return ((Math.max(x,y)+.05)/(Math.min(x,y)+.05)).toFixed(1)};
+const GB=`a{color:inherit}.gd{max-width:1000px;margin:0 auto;padding:0 5vw 40px}.gd h1{margin-top:40px}.gd h2{font-size:1.6em;margin:64px 0 18px}.gd main{padding:24px 0;max-width:none}.lead{font-size:1.15em;max-width:60ch}.k{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.k2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:12px}.pn{border:1px solid #8886;background:#8881;border-radius:6px;padding:14px;overflow:hidden;font:14px/1.5 system-ui,sans-serif}.pn h4{margin:0 0 10px;font-size:13px;opacity:.7;font-weight:600}.c i{display:block;height:76px;margin:-14px -14px 10px;border-bottom:1px solid #8886}.c code,pre{font:12.5px/1.6 ui-monospace,monospace}.ty div{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid #8884;padding:6px 0}.ty span{font-family:var(--f)}.sp{display:flex;align-items:center;gap:10px;margin:6px 0}.sp u{display:block;height:10px;background:var(--fg);opacity:.6}.bx{width:84px;height:84px;background:var(--ac);display:inline-block;margin:6px 14px 6px 0}pre{background:#000a;color:#e8e6e0;padding:16px;border-radius:6px;overflow:auto;margin:0}.gr{display:grid;margin:14px 0}.gr i{height:56px;background:var(--fg);opacity:.18}.dd{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}.dd ul{margin:0;padding-left:18px}.btn.alt{background:transparent;color:var(--fg);box-shadow:none;outline:2px solid currentColor;outline-offset:-2px}.nv{padding:6px 14px;margin:0;font-size:.85em;text-decoration:none;display:inline-block}nav{position:sticky;top:0;z-index:5;flex-wrap:wrap;gap:10px;background:var(--bg);backdrop-filter:blur(8px)}.gd h2{display:inline-block;border-bottom:3px solid var(--ac);padding-bottom:6px;scroll-margin-top:96px}@media(max-width:700px){nav{flex-wrap:nowrap;overflow-x:auto;gap:8px;padding:10px 4vw}nav .nv,nav b{flex:none}nav b{margin-right:12px}.car{height:240px}}.ps{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:12px 14px;border:1px solid #8886;border-radius:6px;margin:-8px 0 18px;font:14px/1.4 system-ui,sans-serif}.ps span{margin-right:auto}.ps b{padding:6px 12px;border-radius:4px;font-weight:600}.pl{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:6px 0 16px}.pl i{display:block;height:54px;border:1px solid #8886;border-radius:4px}.pl code{font-size:11px}.car{position:relative;height:190px}.car .card{position:absolute;top:0;left:0;right:0;margin:0;max-width:none}.cc{display:flex;align-items:center;gap:6px;margin-top:12px}.dt{width:10px;height:10px;border-radius:50%;border:0;padding:0;background:var(--fg);opacity:.3;cursor:pointer}.dt:first-of-type{opacity:1}.s2{grid-column:1/-1}.cs{display:flex;flex-wrap:wrap;gap:6px}.fch{font:12.5px system-ui,sans-serif;padding:5px 10px;border-radius:16px;border:1px solid #8886;background:transparent;color:inherit;cursor:pointer}.fch small{opacity:.6;margin-left:4px}.fch[aria-pressed=true]{background:#8883;border-color:currentColor}.xb{font:12.5px system-ui,sans-serif;padding:6px 12px;border-radius:16px;border:1px solid #8886;background:transparent;color:inherit;cursor:pointer}@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}body{overflow-x:clip}.gd{min-width:0}.k{grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr))}.k2{grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}.dd{grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))}.pl>div{min-width:0}.pl code{display:block;overflow:hidden;text-overflow:ellipsis}.pn{min-width:0}`;
+const chroma=h=>{h=hx(h);const c=[1,3,5].map(k=>parseInt(h.substr(k,2),16));return Math.max(...c)-Math.min(...c)};
+const pick=(pool,bg)=>{const n=c=>+cr(c,bg),ok=pool.filter(c=>n(c)>=4.5),nz=ok.filter(c=>chroma(c)<=110),l=nz.length?nz:ok.length?ok:['#111111','#ffffff'];return l.reduce((a,b)=>n(b)>n(a)?b:a)};
+// text colour, accent and button-label colour chosen from a palette by contrast; cs[0] is the surface
+const roles=cs=>{const ik=pick(cs.slice(1),cs[0]),r=cs.slice(1).filter(c=>c!=ik),ac=r.reduce((a,b)=>chroma(b)>chroma(a)?b:a,r[0]);return [ik,ac,pick(cs.filter(c=>c!=ac),ac)]};
+const ok=(v,t)=>v>=7?'AAA':v>=4.5?'AA':v>=t?'Large text / UI only':'Fails';
+const gd=i=>{const [n,bg,fg,ac,f,css,dna]=S[i],[cat,r,sh,u,ts,w,cols,lay,dos,av,x]=G[i];
+const sw=[['Surface',bg],['Ink',fg],['Accent',ac],['Support 1',x[0]],['Support 2',x[1]]].map(([l,h])=>`<div class="pn c"><i style="background:${h}"></i><b>${l}</b><br><code>${h}</code></div>`).join('');
+const ty=[['Display',3],['Title',1],['Body',0],['Caption',-1]].map(([l,e])=>{const px=Math.round(16*ts**e);return `<div><span style="font-size:${px}px;line-height:1.1">Aa Qy</span><small>${l} ${px}px</small></div>`}).join('');
+const sp=[1,2,3,5,8].map(m=>`<div class="sp"><u style="width:${u*m}px"></u><small>${u*m}px</small></div>`).join('');
+const a=cr(fg,bg),b=cr(ac,bg);
+const [me,md,mh,ms,mp,mx,mf,mc]=M[i],pal=PAL[i],tr=T[mc];
+const cfg={i:i,e:me,d:md,hy:mh,hs:ms,ps:mp,px:mx,fx:mf,c:mc,t:tr,ac:hx(ac),rg:hx(fg)+'66',sh:sh};
+const pr=(nm,cs)=>{const [ik,ac2,lb]=roles(cs),ra=cr(ik,cs[0]),rb=cr(lb,ac2);return `<h4 style="margin:12px 0 6px;font:600 13px system-ui,sans-serif;opacity:.8">${nm}</h4><div class="pl">${cs.map(h=>`<div><i style="background:${h}"></i><code>${h}</code></div>`).join('')}</div><div class="ps" style="background:${cs[0]};color:${ik}"><span>Text ${ik} on ${cs[0]}: ${ra}:1, ${ok(ra,3)}</span><b style="background:${ac2};color:${lb}">Button text ${lb}: ${rb}:1</b></div>`};
+const palh=`<h2 style="font-size:1em;margin-top:24px">Palette schemes</h2><p>${pal[0]}. Each strip shows the text and button-label colours that stay readable on that palette, picked by contrast.</p>${pr('Core',[bg,fg,ac,x[0],x[1]])}${pr(pal[1][0],pal[1][1].split(' '))}${pr(pal[2][0],pal[2][1].split(' '))}`;
+const [bf,why]=FP[i];
+const [fk,hc,bc,al]=FT[i];
+const fph=`<h2 style="font-size:1em;margin-top:24px">Font pairing</h2><div class="k2"><div class="pn"><h4>Heading: ${f}, ${hc}</h4><div style="font:26px/1.15 '${f}',system-ui,sans-serif;overflow-wrap:anywhere">Design that feels like something</div></div><div class="pn"><h4>Body: ${bf}, ${bc}</h4><div style="font:16px/1.6 '${bf}',system-ui,sans-serif">Same words, different world. Body text sets the reading rhythm, so choose it for legibility first.</div></div></div><p>${why}</p><div class="pn fcard" style="margin-top:12px"><h4>Similar fonts you can use. Family type: ${KD[fk][0]}. Click one to preview it.</h4><div class="fsp" style="font:34px/1.15 '${f}',system-ui,sans-serif;overflow-wrap:anywhere;margin:8px 0">Design that feels like something</div><p class="fnm" style="margin:0 0 10px">${f}</p><div class="cs">${[[f,hc],...al,[bf,'Body: '+bc]].map(([nm,lb],j)=>`<button class="fch" data-f="${nm}" aria-pressed="${j==0}">${nm}<small>${lb}</small></button>`).join('')}</div></div>`;
+const J=JSON.stringify;
+const bst=bf=='Share Tech Mono'?'ui-monospace,monospace':['Lora','Cormorant Garamond'].includes(bf)?'Georgia,serif':'system-ui,sans-serif',hs=`'${f}',${TD[fk].s}`,bs=`'${bf}',${bst}`,fa=s=>J(s.replace(/'/g,'').split(',').map(v=>v.trim()));
+const tkc=`:root{\n  --color-surface:${bg};\n  --color-ink:${fg};\n  --color-accent:${ac};\n  --color-support-1:${x[0]};\n  --color-support-2:${x[1]};\n  --font-heading:${hs};\n  --font-body:${bs};\n  --radius:${r};\n  --shadow:${sh};\n  --space-unit:${u}px;\n  --type-ratio:${ts};\n}`;
+const tkj=J({name:n,colors:{surface:bg,ink:fg,accent:ac,support1:x[0],support2:x[1]},fonts:{heading:hs,body:bs},radius:r,shadow:sh,spacing:{unit:u+'px'},typeScale:{ratio:ts}},null,2);
+const tkt=`// tailwind.config.js (${n})\nmodule.exports={\n  theme:{extend:{\n    colors:{surface:'${bg}',ink:'${fg}',accent:'${ac}','support-1':'${x[0]}','support-2':'${x[1]}'},\n    fontFamily:{heading:${fa(hs)},body:${fa(bs)}},\n    borderRadius:{brand:'${r}'},\n    boxShadow:{brand:'${sh}'},\n    spacing:{unit:'${u}px'}\n  }}\n};`;
+const exp=`<div class="pn"><h4>Export tokens</h4><p style="margin:0 0 10px">Copy this style's colours, fonts, radius, shadow and spacing straight into your project.</p><div class="cs"><button class="xb" data-cp="${esc(tkc)}">Copy CSS variables</button><button class="xb" data-cp="${esc(tkj)}">Copy JSON</button><button class="xb" data-cp="${esc(tkt)}">Copy Tailwind config</button></div></div>`;
+const mot=`<h2 id="mot">Motion and states</h2><p class="lead">Hover, press and focus the pieces below. Hover: y ${mh}, scale ${ms}. Press: scale ${mp}, shift ${mx}px. Ease ${me}, ${md}s. Carousel: ${mc}. Built with GSAP and an SVG check mark.</p>
+<div class="k2"><div class="pn"><h4>Button: hover, press, click, success</h4><button class="btn" id="mb"><span>Save changes</span><svg viewBox="0 0 24 24" width="18" height="18" style="vertical-align:-3px;margin-left:8px"><path d="M4 12l5 5L20 6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></button><br><small id="ms">State: idle</small></div>
+<div class="pn"><h4>Card: hover lift</h4><div class="card" id="mc" style="margin:8px 0"><h3>Harbour Café</h3><p>Hover to lift.</p></div></div>
+<div class="pn"><h4>Field: focus</h4><input id="mi" placeholder="Click to focus"></div>
+<div class="pn s2"><h4>Carousel: ${mc} transition</h4><div class="car"><div class="card"><h3>Harbour Café</h3><p>Identity and signage for a corner café.</p></div><div class="card"><h3>Studio Loft</h3><p>A booking site for a photo studio.</p></div><div class="card"><h3>Night Market</h3><p>Posters and wayfinding for a street fair.</p></div></div><div class="cc"><button class="btn alt" id="pv">Prev</button><button class="btn alt" id="nx">Next</button><button class="dt" aria-label="Slide 1"></button><button class="dt" aria-label="Slide 2"></button><button class="dt" aria-label="Slide 3"></button></div></div></div>
+`;
+return `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${n} guide</title><link rel="stylesheet" href="${FONTS}"><style>:root{--bg:${bg};--fg:${fg};--ac:${ac};--f:'${f}'}${BASE}${GB}${css}</style><body>
+<nav><b>${n}</b><a class="btn nv" href="#tok">Tokens</a><a class="btn nv" href="#cmp">Components</a><a class="btn nv" href="#mot">Motion</a><a class="btn nv" href="#lay">Layout</a><a class="btn nv" href="#rul">Rules</a><a class="btn nv" href="#code">Code</a></nav>
+<div class="gd"><h1>${n}</h1><p class="lead">${dna}</p>
+<h2 id="tok">Design tokens</h2><div class="k">${sw}</div>
+<div class="k2"><div class="pn ty"><h4>Type scale, ratio ${ts}, font ${f}</h4>${ty}</div>
+<div class="pn"><h4>Spacing, base unit ${u}px</h4>${sp}<h4 style="margin-top:14px">Radius ${r} and shadow</h4><span class="bx" style="border-radius:${r}"></span><span class="bx" style="box-shadow:${sh};background:var(--bg)"></span></div>
+<div class="pn"><h4>Contrast check</h4>Ink on surface: <b>${a}:1</b> ${ok(a,3)}<br>Accent on surface: <b>${b}:1</b> ${ok(b,3)}<br><small>Text needs 4.5:1, large text and UI parts need 3:1.</small></div>${exp}</div>
+${palh}${fph}
+<h2 id="cmp">Components</h2>
+<main><p>Buttons, card and field, built from the starter CSS below.</p><button class="btn">Primary action</button><button class="btn alt">Secondary</button><div class="card"><h3>Card title</h3><p>Body text sits inside the card at the body size.</p></div><input placeholder="Text field"><button class="btn">Submit</button></main>
+${mot}
+<h2 id="lay">Layout</h2><p class="lead">${lay}</p><div class="gr" style="grid-template-columns:repeat(${cols},1fr);gap:${u*2}px">${'<i></i>'.repeat(cols)}</div><p>${cols} columns, ${w}px max width, ${u*2}px gutter, ${u}px base unit.</p>
+<h2 id="rul">Rules</h2><div class="dd"><div class="pn"><h4>Do</h4><ul>${dos.map(d=>`<li>${d}</li>`).join('')}</ul></div><div class="pn"><h4>Avoid</h4><ul><li>${av}</li></ul></div></div>
+<h2 id="code">Code playground</h2><p class="lead">The token CSS, base layout, component CSS and GSAP motion for ${n}. Edit any of it and watch the preview update live.</p><p><button class="btn" id="pgb">Open code playground</button></p></div>
+<footer class="dna"><b>${n}</b>: ${dna}</footer><script>document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})}});(${fontBind})(document);const cpy=${copyTxt};document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-cp]');if(b)cpy(b.dataset.cp,b)})<\/script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"><\/script><script>(${motion})(${J(cfg)})<\/script></body></html>`};
+const g=document.getElementById('top'),sp=document.getElementById('sp'),ov=document.getElementById('ov'),fr=document.getElementById('fr'),trk=document.getElementById('track'),pr=document.getElementById('pr'),sc=document.getElementById('showcase'),$=s=>document.querySelector(s),N=S.length;let mi=-1,auto=null,lock=0,stt=null;
+const cvA=i=>{const [,bg,fg,ac,f]=S[i],[,r,sh]=G[i];return [['--bg',bg],['--fg',fg],['--ac',ac],['--f',`'${f}'`],['--r',r],['--sh',sh],['--lb',pick([bg,fg],ac)]]};
+const cv=i=>cvA(i).map(([k,v])=>k+':'+v).join(';');
+S.forEach((s,i)=>{const [n,bg,fg,ac,f,,d]=s,cat=G[i][0],[k,hc,bc,al]=FT[i],v=cv(i);
+const p=document.createElement('button');p.title=n;p.setAttribute('aria-label',n);p.style.cssText=`--bg:${bg};--ac:${ac}`;
+p.onclick=()=>{if(matchMedia('(hover:none)').matches&&mi!==i)morph(i,1);else show(i)};p.onpointerenter=e=>{if(e.pointerType=='mouse')morph(i,1)};sp.appendChild(p);
+const a=document.createElement('article');a.className='slide';a.style.cssText=v;
+a.innerHTML=`<span class="idx">${String(i+1).padStart(2,'0')} / ${N} · ${C[cat]} · ${KD[k][0]}</span><div><h3 class="nm fsp">${n}</h3><p class="ds">${d}</p></div><div class="tb"><span class="tl2">Type: <span class="fnm">${f}</span></span><p class="tcl">${hc}. Body font: ${FP[i][0]}, ${bc}. Click a similar font to preview it.</p><div class="cs">${[[f,hc],...al].map(([nm,lb],j)=>`<button class="fch" data-f="${nm}" aria-pressed="${j==0}">${nm}<small>${lb}</small></button>`).join('')}</div></div><div class="mu"><span class="mb" aria-hidden="true">Button</span><span class="mc" aria-hidden="true"></span><span class="dots" aria-hidden="true">${[bg,ac,fg,...G[i][10]].map(c=>`<i style="background:${c}"></i>`).join('')}</span><button class="go">Open guide</button></div>`;
+a.querySelector('.go').onclick=()=>show(i);trk.appendChild(a)});
+const mp=$('#mp'),mo=$('.mo'),orbs=[...document.querySelectorAll('.orb')],bright=a=>hx(a.reduce((x,y)=>lum(y)>lum(x)?y:x));
+[[1,'8%','-4%',-5],[8,'94%','10%',4],[0,'2%','62%',-3],[2,'92%','88%',5],[6,'46%','106%',-4]].forEach(([i,l,tp,rot])=>{const c=document.createElement('div');c.className='fc';c.style.cssText=cv(i)+`;left:${l};top:${tp};rotate:${rot}deg`;c.innerHTML=`<span>${S[i][0]}</span><i class="s"></i>`;mo.appendChild(c)});
+function morph(i,user,init){if(user){lock=1;clearInterval(auto);auto=null}if(i===mi)return;mi=i;const [n,bg,fg,ac]=S[i],g2=window.gsap;
+const b0=getComputedStyle(mp).backgroundColor,c0=getComputedStyle(mp).color;
+cvA(i).forEach(([k,v])=>mp.style.setProperty(k,v));
+$('#mn').textContent=n;$('#mcat').textContent=C[G[i][0]]+' · '+String(i+1).padStart(2,'0')+' / '+N;$('#mtx').textContent=S[i][6];
+if(g2&&!init){g2.fromTo(mp,{backgroundColor:b0,color:c0},{backgroundColor:hx(bg),color:hx(fg),duration:.5,clearProps:'backgroundColor,color'});
+g2.fromTo('#mp > *',{y:12,opacity:0},{y:0,opacity:1,duration:.45,stagger:.05,ease:'power3.out',overwrite:true});
+g2.fromTo(mp,{scale:.96},{scale:1,duration:.6,ease:'back.out(2.2)'});
+orbs.forEach((o,k)=>g2.to(o,{backgroundColor:hx(k?bg:ac),duration:1.2}))}}
+$('#mpv').onclick=()=>morph((mi+N-1)%N,1);$('#mnx').onclick=()=>morph((mi+1)%N,1);$('#mgo').onclick=()=>show(mi);
+$('#hnt').textContent=matchMedia('(hover:none)').matches?'Tap a colour to morph the card above. Tap it again to open the guide.':'Hover the colour strip to morph the card above. Click to open a guide. Drag the samples.';
+const calm=matchMedia('(prefers-reduced-motion:reduce)').matches,autoplay=()=>{if(!calm&&!lock&&!auto)auto=setInterval(()=>morph((mi+1)%N),3200)};
+mo.onpointerenter=()=>{clearInterval(auto);auto=null};mo.onpointerleave=autoplay;morph(0,0,1);autoplay();
+[0,1].forEach(row=>{const d=document.createElement('div'),it=S.map(s=>`<span style="font-family:'${s[4]}';color:${bright([s[1],s[2],s[3]])}">${s[0]}</span><b>✦</b>`).join('');d.className='mqr r'+row;d.innerHTML=`<div class="mqt">${it+it}</div>`;$('.mq').appendChild(d)});
+const WM=[11,2,4,0,17,12,15,5,9,16,3,18,10,19];
+'Style Handbook'.split(' ').forEach((w,wi)=>{const q=document.createElement('span');q.className='fwd';[...w].forEach((ch,k)=>{const i=WM[(wi*6+k)%WM.length],s=document.createElement('span');s.textContent=ch;s.style.cssText=`font-family:'${S[i][4]}';color:${bright([S[i][1],S[i][2],S[i][3]])}`;q.appendChild(s)});$('.fw').appendChild(q)});
+$('#rnd').onclick=()=>show(Math.floor(Math.random()*N));
+function goSlide(i){if(stt)scrollTo({top:stt.start+(stt.end-stt.start)*i/(N-1),behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});else trk.children[i].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',inline:'center',block:'nearest'})}
+document.querySelectorAll('.ft [data-k]').forEach(b=>b.onclick=()=>goSlide(Math.max(0,G.findIndex(x=>x[0]==b.dataset.k))));
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a){e.preventDefault();const t=$(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})}});
+$('#up').onclick=()=>scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
+const kd=$('#kd');
+Object.entries(KD).forEach(([k,[n,d,ex]])=>{const used=S.map((s,i)=>FT[i][0]==k?s[0]:null).filter(Boolean),c=document.createElement('button');c.className='kc';c.innerHTML=`<div class="aa" style="font-family:'${ex}'">Aa</div><h3>${n}</h3><p>${d}</p><small>${ex}. Used by ${used.length}: ${used.join(', ')}</small><span class="ex">Explore ${TD[k].f.length} fonts, motion and colour &rarr;</span>`;c.onclick=()=>showType(k);kd.appendChild(c)});
+fontBind(document);
+
+function showType(k){const h=tyHTML(k);let w=null;try{w=window.open('','_blank')}catch(e){}
+if(w&&w.document){w.document.write(h);w.document.close()}else{ov.style.cssText='--bg:#232323;--fg:#f1eee8;--ac:#f1eee8;--f:system-ui;--r:20px;--sh:none;--lb:#232323;--lc:round';$('#on').textContent=KD[k][0]+' type guide';fr.srcdoc=h;openOv();
+if(window.gsap&&!matchMedia('(prefers-reduced-motion:reduce)').matches)gsap.fromTo(ov,{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0 0 0% 0)',duration:.5,ease:'power3.out',clearProps:'clipPath'})}}
+function show(i){const h=gd(i);let w=null;try{w=window.open('','_blank')}catch(e){}
+if(w&&w.document){w.document.write(h);w.document.close()}else{const [n,bg,fg,ac]=S[i],r=G[i][1];ov.style.cssText=cv(i)+`;--lc:${parseFloat(r)===0?'square':'round'}`;
+$('#on').textContent=n+' guide';fr.srcdoc=h;openOv();
+if(window.gsap&&!matchMedia('(prefers-reduced-motion:reduce)').matches)gsap.fromTo(ov,{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0 0 0% 0)',duration:.5,ease:'power3.out',clearProps:'clipPath'})}}
+let lastF=null;
+const openOv=()=>{lastF=document.activeElement;ov.hidden=false;document.documentElement.style.overflow='hidden';document.querySelectorAll('body>*:not(#ov):not(script)').forEach(e=>{e.inert=true});$('#cl').focus()};
+const closeOv=()=>{ov.hidden=true;fr.srcdoc='';document.documentElement.style.overflow='';document.querySelectorAll('body>*').forEach(e=>{e.inert=false});if(lastF&&lastF.focus)lastF.focus()};
+document.getElementById('cl').onclick=closeOv;
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!ov.hidden)closeOv()});
+// scroll animation: needs GSAP and ScrollTrigger, skipped for reduced motion
+if(window.gsap&&window.ScrollTrigger&&!matchMedia('(prefers-reduced-motion:reduce)').matches){gsap.registerPlugin(ScrollTrigger);ScrollTrigger.config({ignoreMobileResize:true});
+gsap.timeline({defaults:{ease:'power4.out'}}).from('.ln span',{yPercent:110,duration:1.1,stagger:.12}).from('.hero p,.cta,.st',{y:24,opacity:0,duration:.8,stagger:.1},'-=.6').from('#sp button',{scaleY:0,transformOrigin:'50% 100%',duration:.6,stagger:.025,ease:'back.out(2)'},'-=.5').from('.fc',{scale:.6,opacity:0,duration:.8,stagger:.1,ease:'back.out(1.7)'},'-=.8').from('.mp',{y:50,opacity:0,duration:1},'-=1.4');
+document.querySelectorAll('.fc').forEach((c,k)=>gsap.to(c,{yPercent:k%2?-10:10,duration:2.4+k*.3,repeat:-1,yoyo:true,ease:'sine.inOut'}));
+if(window.Draggable){gsap.registerPlugin(Draggable);document.querySelectorAll('.fc').forEach(c=>Draggable.create(c,{type:'x,y',onPress(){gsap.to(c,{scale:1.1,duration:.2});c.style.zIndex=6},onRelease(){gsap.to(c,{x:0,y:0,scale:1,duration:1.1,ease:'elastic.out(1,.45)'})}}))}
+document.querySelectorAll('.st b').forEach(b=>{const o={v:0};b.textContent='0';gsap.to(o,{v:+b.dataset.n,duration:1.6,delay:.7,ease:'power2.out',onUpdate:()=>{b.textContent=Math.round(o.v)}})});
+const oq=orbs.map(o=>[gsap.quickTo(o,'x',{duration:1.4,ease:'power3'}),gsap.quickTo(o,'y',{duration:1.4,ease:'power3'})]);
+$('.hero').addEventListener('pointermove',e=>oq.forEach(([qx,qy],k)=>{qx((e.clientX/innerWidth-.5)*(k?-120:120));qy((e.clientY/innerHeight-.5)*(k?-90:90))}));
+gsap.set(mp,{transformPerspective:900});const rx=gsap.quickTo(mp,'rotationX',{duration:.5}),ry=gsap.quickTo(mp,'rotationY',{duration:.5});
+mo.addEventListener('pointermove',e=>{const b=mo.getBoundingClientRect();ry(((e.clientX-b.left)/b.width-.5)*14);rx(-((e.clientY-b.top)/b.height-.5)*14)});mo.addEventListener('pointerleave',()=>{rx(0);ry(0)});
+gsap.to('.mo',{yPercent:-8,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+gsap.to('.hero .in',{yPercent:-14,opacity:.15,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+sc.classList.add('pin');let cur=-1;
+const tint=k=>{const [n,bg,fg,ac]=S[k],bd=+cr(ac,bg)<1.5?fg:ac,tx=+cr('#111111',bd)>+cr('#ffffff',bd)?'#111111':'#ffffff';
+$('#cnt').textContent=String(k+1).padStart(2,'0')+' / '+N;$('#nm').textContent=n;gsap.to(sc,{backgroundColor:hx(bd),color:tx,duration:.6,overwrite:'auto'})};
+const dist=()=>trk.scrollWidth-innerWidth;
+const tw=gsap.to(trk,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:sc,start:'top top',end:()=>'+='+dist(),pin:true,scrub:.5,invalidateOnRefresh:true,onUpdate:s=>{pr.style.transform='scaleX('+s.progress+')';const k=Math.round(s.progress*(N-1));if(k!=cur){cur=k;tint(k)}}}});
+tint(0);cur=0;stt=tw.scrollTrigger;
+trk.querySelectorAll('.slide').forEach(s=>{
+gsap.fromTo(s,{scale:.86,opacity:.45},{scale:1,opacity:1,ease:'none',scrollTrigger:{trigger:s,containerAnimation:tw,start:'left 85%',end:'left 45%',scrub:true}});
+gsap.fromTo(s.querySelector('.nm'),{x:80},{x:-40,ease:'none',scrollTrigger:{trigger:s,containerAnimation:tw,start:'left right',end:'right left',scrub:true}})});
+gsap.from('.ty h2,.ty>p',{y:40,opacity:0,duration:.8,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.ty',start:'top 80%'}});
+ScrollTrigger.batch('.kc',{start:'top 92%',onEnter:b=>gsap.fromTo(b,{y:50,opacity:0},{y:0,opacity:1,stagger:.06,duration:.7,ease:'power3.out',overwrite:true})});
+gsap.from('.fw .fwd span',{yPercent:120,opacity:0,stagger:.04,duration:.8,ease:'power4.out',scrollTrigger:{trigger:'.fw',start:'top 92%'}});
+gsap.from('.fcta,.fgd>div',{y:40,opacity:0,duration:.7,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.fcta',start:'top 90%'}})}
+</script>
+</body></html>

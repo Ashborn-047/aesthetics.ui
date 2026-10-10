@@ -1,0 +1,72 @@
+/**
+ * ============================================================================
+ * COMPONENT: STYLE PREVIEW CARD (.mp, .mo)
+ * ============================================================================
+ *
+ * Morphing 3D card in the hero that smoothly changes its tokens (background,
+ * text colour, accent, font, radius, shadow) as the user interacts with the colour strip.
+ * Features 3D tilt tracking and draggable sample tags.
+ */
+
+.mo {
+  width: min(400px, 100%);
+  justify-self: center;
+  position: relative;
+}
+
+.mp {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f), system-ui, sans-serif;
+  border-radius: 22px;
+  padding: 24px;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 30px 70px #0007;
+  position: relative;
+  z-index: 1;
+  transform-style: preserve-3d;
+}
+
+.mph {
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  opacity: 0.65;
+  text-transform: uppercase;
+}
+
+.mn {
+  margin: 0;
+  font-weight: 400;
+  font-size: clamp(32px, 3.6vw, 48px);
+  line-height: 1;
+  overflow-wrap: anywhere;
+}
+
+.mtx {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.mi {
+  padding: 10px 14px;
+  border-radius: var(--r);
+  border: 1px solid currentColor;
+  opacity: 0.65;
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+}
+
+.mpn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+}
